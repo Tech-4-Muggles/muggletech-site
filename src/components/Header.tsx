@@ -4,7 +4,8 @@ import Link from "next/link";
 import InstallButton from "./InstallButton";
 
 const nav = [
-  { href: "/jane", label: "Product" },
+  { href: "/products", label: "Products" },
+  { href: "/services", label: "Services" },
   { href: "/download", label: "Download" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
@@ -16,9 +17,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
-        <Link href="/" className="font-semibold text-slate-100 text-lg">
-          MuggleTech
-        </Link>
+        <Link href="/" className="font-semibold text-slate-100 text-lg">MuggleTech</Link>
+
         <nav className="hidden md:flex items-center gap-6 ml-6">
           {nav.map((n) => (
             <Link key={n.href} href={n.href} className="text-slate-300 hover:text-white">
@@ -26,9 +26,11 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+
         <div className="ml-auto hidden md:block">
           <InstallButton />
         </div>
+
         <button
           className="ml-auto md:hidden text-slate-200"
           aria-label="Menu"
@@ -37,6 +39,7 @@ export default function Header() {
           ☰
         </button>
       </div>
+
       {open && (
         <div className="md:hidden border-t border-slate-800 px-4 py-2 bg-slate-900">
           <div className="flex flex-col gap-2">
