@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="border-t border-slate-800 bg-slate-950 text-slate-400">
@@ -9,19 +11,19 @@ export default function Footer() {
         <div className="text-sm">
           <div className="font-medium text-slate-200">Product</div>
           <ul className="mt-2 space-y-1">
-            <li><a className="hover:text-white" href="/jane">J.A.N.E.</a></li>
-            <li><a className="hover:text-white" href="/download">Download</a></li>
-            <li><a className="hover:text-white" href="/pricing">Pricing</a></li>
+            <li><Link className="hover:text-white" href="/jane">J.A.N.E.</Link></li>
+            <li><Link className="hover:text-white" href="/download">Download</Link></li>
+            <li><Link className="hover:text-white" href="/pricing">Pricing</Link></li>
           </ul>
         </div>
         <div className="text-sm">
           <div className="font-medium text-slate-200">Company</div>
           <ul className="mt-2 space-y-1">
-            <li><a className="hover:text-white" href="/about">About</a></li>
-            <li><a className="hover:text-white" href="/contact">Contact</a></li>
-            <li><a className="hover:text-white" href="/privacy">Privacy</a></li>
-            <li><a className="hover:text-white" href="/terms">Terms</a></li>
-            <li><a className="hover:text-white" href="/cookies">Cookies</a></li>
+            <li><Link className="hover:text-white" href="/about">About</Link></li>
+            <li><Link className="hover:text-white" href="/contact">Contact</Link></li>
+            <li><Link className="hover:text-white" href="/privacy">Privacy</Link></li>
+            <li><Link className="hover:text-white" href="/terms">Terms</Link></li>
+            <li><Link className="hover:text-white" href="/cookies">Cookies</Link></li>
           </ul>
         </div>
       </div>

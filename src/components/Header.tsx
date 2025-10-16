@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import InstallButton from "./InstallButton";
 
 const nav = [
@@ -15,12 +16,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
-        <a href="/" className="font-semibold text-slate-100 text-lg">MuggleTech</a>
+        <Link href="/" className="font-semibold text-slate-100 text-lg">
+          MuggleTech
+        </Link>
         <nav className="hidden md:flex items-center gap-6 ml-6">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-slate-300 hover:text-white">
+            <Link key={n.href} href={n.href} className="text-slate-300 hover:text-white">
               {n.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="ml-auto hidden md:block">
@@ -38,9 +41,14 @@ export default function Header() {
         <div className="md:hidden border-t border-slate-800 px-4 py-2 bg-slate-900">
           <div className="flex flex-col gap-2">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} className="py-2 text-slate-300 hover:text-white" onClick={() => setOpen(false)}>
+              <Link
+                key={n.href}
+                href={n.href}
+                className="py-2 text-slate-300 hover:text-white"
+                onClick={() => setOpen(false)}
+              >
                 {n.label}
-              </a>
+              </Link>
             ))}
             <InstallButton className="mt-2 w-full text-center" />
           </div>
