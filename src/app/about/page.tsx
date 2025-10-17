@@ -44,14 +44,14 @@ function Founder({
   src: string;
 }) {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
+    <div className="glass rounded-2xl p-5 hover:-translate-y-0.5 transition">
       <div className="flex items-center gap-4">
         <Image
           src={src}
           alt={name}
           width={72}
           height={72}
-          className="h-18 w-18 rounded-xl object-cover"
+	  className="h-18 w-18 rounded-xl object-cover [animation:float_6s_ease-in-out_infinite]"
         />
         <div>
           <div className="font-medium">{name}</div>

@@ -24,3 +24,38 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ---------- Design tokens ---------- */
+:root{
+  --bg:#0b1220;           /* canvas */
+  --panel:#0f172a;        /* cards/headers */
+  --muted:#94a3b8;        /* secondary text */
+  --brand:#22d3ee;        /* cyan */
+  --brand-2:#6366f1;      /* indigo */
+}
+
+body{ background: radial-gradient(1200px 600px at 70% -20%, rgba(34,211,238,.10), transparent), var(--bg); }
+
+/* ---------- Subtle motion ---------- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes pulseGlow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(34,211,238,.0); }
+  50%     { box-shadow: 0 0 20px 4px rgba(34,211,238,.25); }
+}
+.glass {
+  background: color-mix(in oklab, var(--panel) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(148,163,184,.18);
+}
+.btn-glow:hover { animation: pulseGlow 1.4s ease-in-out infinite; }
+
+/* gradient accents */
+.grad-text{
+  background: linear-gradient(90deg,var(--brand),var(--brand-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.ring-brand:focus-visible{ outline: none; box-shadow: 0 0 0 3px rgba(34,211,238,.45);}
