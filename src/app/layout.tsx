@@ -12,6 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+    	<meta name="color-scheme" content="dark" />
+      </head>
+      
       <body className="bg-[var(--bg)] text-slate-100 antialiased">
         {/* soft background glow */}
         <div className="pointer-events-none fixed inset-0 -z-10">

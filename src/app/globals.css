@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Force dark UI regardless of OS preference */
+:root { color-scheme: dark; } /* affects form controls/scrollbars */
+html, body { background: var(--bg); color: #e5e7eb; } /* text-slate-200-ish baseline */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
