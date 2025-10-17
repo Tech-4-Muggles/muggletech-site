@@ -1,5 +1,3 @@
-cd ~/Desktop/muggletech-site
-cat > src/components/Header.tsx << 'EOF'
 "use client";
 import { useState } from "react";
 import Link from "next/link";
@@ -73,4 +71,3 @@ export default function Header() {
     </header>
   );
 }
-EOF
