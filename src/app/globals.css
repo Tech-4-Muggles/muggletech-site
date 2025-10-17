@@ -2,7 +2,20 @@
 
 /* Force dark UI regardless of OS preference */
 :root { color-scheme: dark; } /* affects form controls/scrollbars */
-html, body { background: var(--bg); color: #e5e7eb; } /* text-slate-200-ish baseline */
+html, body {
+  background: var(--bg); 
+  color: #e5e7eb; 
+} /* text-slate-200-ish baseline */
+
+/* Ensure headings never flip to black */
+h1,h2,h3,h4,h5,h6 { color: #e5e7eb; }
+
+/* Make body copy a touch dimmer for contrast */
+p,li,small { color: #cbd5e1; }  /* slate-300-ish */
+
+/* Links readable everywhere */
+a { color: #93c5fd; }           /* light blue */
+a:hover { color: #bfdbfe; }
 
 :root {
   --background: #ffffff;

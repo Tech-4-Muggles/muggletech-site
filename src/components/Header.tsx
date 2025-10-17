@@ -19,13 +19,13 @@ export default function Header() {
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
         <Link href="/" className="flex items-center gap-2" aria-label="MuggleTech home">
           <Image
-            src="/images/MuggleTech-logo-with-text.avif"
-            alt="MuggleTech"
-            width={160}
-            height={36}
-            priority
-            className="h-9 w-auto"
-          />
+  	    src="/images/MuggleTech-logo-with-text.avif"
+  	    alt="MuggleTech"
+  	    width={160}
+  	    height={36}
+  	    priority
+  	    className="h-9 w-auto drop-shadow-[0_1px_8px_rgba(0,0,0,.45)]"
+	  />
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 ml-6">

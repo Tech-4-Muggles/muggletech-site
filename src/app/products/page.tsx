@@ -29,11 +29,11 @@ export default function Products() {
           href="/jane"
         />
         <Card
-          title="Upcoming: Ops Copilot"
-          desc="Automate repetitive team tasks (SOPs, summaries, docs)."
-          cta={<Link href="/contact" className="underline">Join the waitlist</Link>}
-          href="/contact"
-        />
+  	  title="Custom Automations for Teams"
+  	  desc="We scope and ship AI workflows for your business — faster approvals, better docs, less copy-paste."
+  	  cta={<Link href="/services" className="underline">See services</Link>}
+  	  href="/services"
+	/>
       </div>
     </section>
   );
