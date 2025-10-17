@@ -5,6 +5,11 @@ export default function Products() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-12 space-y-8">
       <h1 className="text-3xl md:text-4xl font-semibold">Products</h1>
+	<img
+  	src="/images/gradient-1.jpeg"
+  	alt="Products"
+  	className="rounded-2xl shadow-2xl mt-6"
+	/>
       <p className="text-slate-300 max-w-3xl">
         We build AI-driven assistants and apps that speed up real work — from job hunting to everyday ops.
       </p>
