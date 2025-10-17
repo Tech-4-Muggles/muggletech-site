@@ -1,15 +1,13 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import dynamic from "next/dynamic";
+import MobileInstallBar from "@/components/MobileInstallBar";
 
 export const metadata = {
   title: "MuggleTech — J.A.N.E.",
   description: "Your job-hunt sidekick, but faster.",
 };
 
-// client-only sticky install bar
-const MobileInstallBar = dynamic(() => import("@/components/MobileInstallBar"), { ssr: false });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
