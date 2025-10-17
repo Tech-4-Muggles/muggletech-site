@@ -6,7 +6,7 @@ export default function Products() {
     <section className="mx-auto max-w-6xl px-6 py-12 space-y-8">
       <h1 className="text-3xl md:text-4xl font-semibold">Products</h1>
 	<img
-  	src="/images/gradient-1.jpeg"
+  	src="/images/gradient-1.svg"
   	alt="Products"
   	className="rounded-2xl shadow-2xl mt-6"
 	/>
