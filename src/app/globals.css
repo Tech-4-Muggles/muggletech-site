@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Design tokens (LIGHT THEME BLUE→GOLD) ---------- */
+:root{
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --ink:#0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --brand:#007BFF;   /* blue */
+  --brand-2:#FFD54F; /* gold */
+}
+
+/* One look everywhere */
+:root { color-scheme: light; }
+html, body { background: var(--bg); color: var(--ink); }
+
+h1,h2,h3,h4,h5,h6 { color: var(--ink); }
+p,li,small { color: var(--muted); }
+
+a { color: #2563eb; }
+a:hover { color: #1d4ed8; }
+
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 24px rgba(15, 23, 42, .06);
+}
+
+.btn-glow:hover { box-shadow: 0 8px 24px rgba(239,191,91,.35); }
+
+.grad-text{
+  background: linear-gradient(90deg,var(--brand),var(--brand-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.ring-brand:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(14,165,233,.35); }
+
+body{
+  background:
+    radial-gradient(800px 400px at 70% -10%, rgba(14,165,233,.10), transparent 60%),
+    radial-gradient(600px 300px at -10% 30%, rgba(253,224,71,.08), transparent 60%),
+    var(--bg);
+}
