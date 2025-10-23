@@ -1,0 +1,40 @@
+name: Build and publish static site
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Export static
+        run: npm run export
+
+      - name: Publish to deploy-static branch
+        run: |
+          cd out
+          touch .nojekyll
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "deploy: static site"
+          git branch -M deploy-static
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Tech-4-Muggles/muggletech-site.git deploy-static
