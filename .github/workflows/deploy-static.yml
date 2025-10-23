@@ -1,13 +1,11 @@
-name: Build and publish static site
+name: ci: export Next to deploy-static for Hostinger
+
 on:
   push:
     branches: [ main ]
 
-permissions:
-  contents: write
-
 jobs:
-  build-export:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,24 +15,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install deps
         run: npm ci
 
-      - name: Build
+      - name: Build (writes static to out/)
         run: npm run build
 
-      - name: Export static
-        run: npm run export
-
-      - name: Publish to deploy-static branch
-        run: |
-          cd out
-          touch .nojekyll
-          git init
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "deploy: static site"
-          git branch -M deploy-static
-          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Tech-4-Muggles/muggletech-site.git deploy-static
+      - name: Publish out/ to deploy-static
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: deploy-static
+          force_orphan: true
