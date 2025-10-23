@@ -1,8 +1,12 @@
-name: ci: export Next to deploy-static for Hostinger
+name: "ci: export Next to deploy-static for Hostinger"
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   build-and-publish:
@@ -14,7 +18,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'npm'
 
       - name: Install deps
@@ -27,6 +31,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: out
           publish_branch: deploy-static
           force_orphan: true
