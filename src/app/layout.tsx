@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileInstallBar from "@/components/MobileInstallBar";
+import BuyCoffee from "@/components/BuyCoffee";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 
@@ -24,6 +25,7 @@ export const metadata = {
     images: ["/og.jpg"],
   },
   alternates: { canonical: "https://muggletech.net" },
+  metadataBase: new URL("https://khaki-curlew-361465.hostingersite.com"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -49,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="min-h-[72vh]">{children}</main>
         <MobileInstallBar />
         <Footer />
+	<BuyCoffee />
       </body>
     </html>
   );
