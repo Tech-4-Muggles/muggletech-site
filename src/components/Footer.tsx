@@ -14,9 +14,9 @@ export default function Footer() {
               href="https://buymeacoffee.com/muggletech"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-amber-400/90 hover:bg-amber-400 text-slate-900 px-3 py-1.5 transition"
+              className="inline-flex items-center gap-2 rounded-xl px-3 py-1.5 font-medium bg-[var(--brand-soft)] text-[var(--brand-ink)] hover:brightness-95 transition"
             >
-              ☕ Buy us a coffee
+              <span aria-hidden>☕</span> Buy us a coffee
             </a>
           </div>
         </div>
@@ -38,6 +38,13 @@ export default function Footer() {
             <li><Link href="/privacy" className="hover:text-slate-900">Privacy</Link></li>
             <li><Link href="/terms" className="hover:text-slate-900">Terms</Link></li>
           </ul>
+        </div>
+        <div>
+          <div className="font-semibold mb-2">Contact</div>
+          <div className="text-sm text-[var(--muted)]">
+            <a href="tel:+16178938998" className="hover:underline">+1 (617) 893-8998</a><br/>
+            <a href="mailto:contactmuggletech@gmail.com" className="hover:underline">contactmuggletech@gmail.com</a>
+          </div>
         </div>
       </div>
 

@@ -60,11 +60,11 @@ export default function Home() {
         <Reveal>
           <div className="glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover">
             <Image
-              src="/images/jane-icon.png"
-              alt="J.A.N.E. logo"
-              width={72}
-              height={72}
-              className="rounded-xl"
+              src="/images/Jane_text.png"
+              alt="J.A.N.E."
+              width={220}
+              height={64}
+              className="h-10 w-auto md:h-12"
             />
             <div className="flex-1">
               <div className="text-xl font-medium">
@@ -166,6 +166,9 @@ export default function Home() {
       >
         <Reveal>
           <h2 className="text-3xl font-semibold">Contact</h2>
+          <p className="text-[var(--muted)]">
+  Prefer phone? Call <a className="underline" href="tel:+16178938998">+1 (617) 893-8998</a>.
+</p>
         </Reveal>
         <Reveal>
           <form

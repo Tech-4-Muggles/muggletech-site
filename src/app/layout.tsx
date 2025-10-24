@@ -31,7 +31,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <meta name="color-scheme" content="light" />
         <Script defer data-domain="muggletech.net" src="https://plausible.io/js/script.js" />
