@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://khaki-curlew-361465.hostingersite.com
+
+# Sitemaps
+Sitemap: https://khaki-curlew-361465.hostingersite.com/sitemap.xml
