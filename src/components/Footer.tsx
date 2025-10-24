@@ -14,9 +14,10 @@ export default function Footer() {
               href="https://buymeacoffee.com/muggletech"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl px-3 py-1.5 font-medium bg-[var(--brand-soft)] text-[var(--brand-ink)] hover:brightness-95 transition"
+              className="inline-flex items-center gap-2 rounded-xl px-3 py-1.5 font-semibold bg-[var(--brand)] text-white hover:shadow-sm"
             >
-              <span aria-hidden>☕</span> Buy us a coffee
+              <span className="text-base">☕</span>
+              <span>Buy us a coffee</span>
             </a>
           </div>
         </div>
@@ -48,7 +49,7 @@ export default function Footer() {
             <a href="mailto:contactmuggletech@gmail.com" className="hover:underline">contactmuggletech@gmail.com</a>
           </div>
         </div>
-        
+
       <div className="border-t border-[var(--line)]">
         <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex items-center justify-between">
           <div>© {new Date().getFullYear()} MuggleTech. All rights reserved.</div>
