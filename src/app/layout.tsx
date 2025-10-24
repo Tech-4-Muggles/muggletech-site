@@ -5,6 +5,7 @@ import MobileInstallBar from "@/components/MobileInstallBar";
 import BuyCoffee from "@/components/BuyCoffee";
 import Script from "next/script";
 import { Inter } from "next/font/google";
+import PageTransition from "@/components/PageTransition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </div>
         <Header />
-        <main className="min-h-[72vh]">{children}</main>
+        <main className="min-h-[72vh]"><PageTransition>{children}</PageTransition></main>
         <MobileInstallBar />
         <Footer />
 	<BuyCoffee />

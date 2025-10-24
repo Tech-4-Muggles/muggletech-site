@@ -18,8 +18,14 @@ export default function Home() {
         <Reveal>
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
             Building AI solutions to simplify your life.<br className="hidden md:block" />
-            <span className="grad-text"> The only thing we can’t do is actual magic.</span>
+            <span className="grad-text"> The only thing we can’t do is actual <span className="shimmer">magic</span>.</span>
           </h1>
+          <Link
+          href="/jane/"
+          className="cta-boost inline-flex items-center gap-2 rounded-md bg-blue-600 px-5 py-3 text-white font-medium hover:bg-blue-700 transition-colors"
+        >
+          ▶ Get J.A.N.E. on Chrome
+        </Link>
         </Reveal>
         <Reveal className="mt-4">
           <p className="text-lg md:text-xl text-[var(--muted)] mt-2 max-w-3xl mx-auto">
