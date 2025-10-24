@@ -22,7 +22,7 @@ export default function Header() {
           <picture>
             <source srcSet="/images/MuggleTech-logo-with-text.avif" type="image/avif" />
             <Image
-              src="/images/muggletech-wordmark.png" // PNG/SVG fallback
+              src="/images/logo-with-text.jpeg"
               alt="MuggleTech"
               width={160}
               height={36}

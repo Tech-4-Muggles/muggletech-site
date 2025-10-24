@@ -1,7 +1,10 @@
 "use client";
 
+// Extend global type safely without overwriting
 declare global {
-  interface Window { plausible?: (e: string) => void }
+  interface Window {
+    plausible?: (event: string, options?: Record<string, any>) => void;
+  }
 }
 
 export default function BuyCoffee({ className = "" }: { className?: string }) {
