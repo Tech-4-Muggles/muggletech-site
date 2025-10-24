@@ -85,3 +85,10 @@ body{
   50% { background-position: 100% 50% }
   100% { background-position: 0% 50% }
 }
+
+/* Floating Buy Coffee hover shadow */
+.buycoffee-fixed:hover {
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+  transition: all 0.18s ease;
+}
