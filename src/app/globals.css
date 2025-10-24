@@ -92,3 +92,5 @@ body{
   transform: translateY(-1px);
   transition: all 0.18s ease;
 }
+
+html { scroll-behavior: smooth; }
