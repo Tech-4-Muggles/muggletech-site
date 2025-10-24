@@ -11,7 +11,7 @@ export const metadata = {
 export default function Jane(){
   return (
     <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-      <h1 className="text-3xl md:text-4xl font-semibold">J.A.N.E.</h1>
+      <div className="px-6 pt-10"><img src="/images/Jane_text.png" alt="J.A.N.E." className="h-10 md:h-12 w-auto" /></div>
 
       <div className="glass rounded-2xl p-6 flex items-center gap-6">
         <Image src="/images/jane-icon.png" alt="J.A.N.E." width={72} height={72} className="rounded-xl" />

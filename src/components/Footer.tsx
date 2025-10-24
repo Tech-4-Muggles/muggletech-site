@@ -39,15 +39,16 @@ export default function Footer() {
             <li><Link href="/terms" className="hover:text-slate-900">Terms</Link></li>
           </ul>
         </div>
-        <div>
+      </div>
+
+      <div>
           <div className="font-semibold mb-2">Contact</div>
           <div className="text-sm text-[var(--muted)]">
             <a href="tel:+16178938998" className="hover:underline">+1 (617) 893-8998</a><br/>
             <a href="mailto:contactmuggletech@gmail.com" className="hover:underline">contactmuggletech@gmail.com</a>
           </div>
         </div>
-      </div>
-
+        
       <div className="border-t border-[var(--line)]">
         <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex items-center justify-between">
           <div>© {new Date().getFullYear()} MuggleTech. All rights reserved.</div>
