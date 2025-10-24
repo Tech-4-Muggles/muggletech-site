@@ -3,10 +3,27 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileInstallBar from "@/components/MobileInstallBar";
 import Script from "next/script";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "MuggleTech — Making life simpler with AI",
-  description: "Building AI solutions to simplify your life. It's not magic — it's MuggleTech.",
+  description: "Building AI solutions to simplify your life. The only thing we can’t do is actual magic.",
+  openGraph: {
+    title: "MuggleTech — Making life simpler with AI",
+    description: "We build practical AI tools and automations for people and teams.",
+    images: ["/og.jpg"],
+    url: "https://muggletech.net",
+    siteName: "MuggleTech",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MuggleTech — Making life simpler with AI",
+    description: "We build practical AI tools and automations for people and teams.",
+    images: ["/og.jpg"],
+  },
+  alternates: { canonical: "https://muggletech.net" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -16,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="color-scheme" content="light" />
         <Script defer data-domain="muggletech.net" src="https://plausible.io/js/script.js" />
       </head>
-      <body className="bg-[var(--bg)] text-[var(--ink)] antialiased">
+      <body className={`${inter.className} bg-[var(--bg)] text-[var(--ink)] antialiased`}>
         {/* soft light glows */}
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div
