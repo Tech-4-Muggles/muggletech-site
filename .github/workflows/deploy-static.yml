@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+# 👇 allow this workflow to push commits
+permissions:
+  contents: write
+
 jobs:
   build-export:
     runs-on: ubuntu-latest
@@ -21,7 +25,6 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      # This is read by the footer after export (ends up at /commit.txt)
       - name: Write commit hash
         run: echo "${{ github.sha }}" > public/commit.txt
 
