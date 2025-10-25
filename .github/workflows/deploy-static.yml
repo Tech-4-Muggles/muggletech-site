@@ -2,42 +2,50 @@ name: ci: export Next to deploy-static for Hostinger
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  export:
+  build-export:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm ci
 
+      # Footer reads /commit.txt; write before build so Next copies it into /out
       - name: Write commit hash
         run: echo "${{ github.sha }}" > public/commit.txt
 
-      - name: Build + export Next
-        run: |
-          npm run build
-          npx next export -o out
+      # With next.config "output: 'export'", this creates the /out folder
+      - name: Build (static export)
+        run: npm run build
 
-      - name: Push export to deploy-static branch
+      # Force-publish the contents of /out to the branch Hostinger pulls from
+      - name: Publish to deploy-static branch
+        shell: bash
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
+
+          # Create a clean branch that contains only the static files
           git fetch origin
-          git checkout -B deploy-static
-          rm -rf .next node_modules
+          git checkout --orphan deploy-static
+          git reset --hard
+          git clean -fdx
+
+          # Copy exported site to repo root
           cp -r out/* .
-          rm -rf out
+          rm -rf out .next node_modules
+
           git add -A
-          git commit -m "Deploy ${{ github.sha }}"
+          git commit -m "deploy: ${{ github.sha }}"
           git push -f origin deploy-static
