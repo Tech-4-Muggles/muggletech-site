@@ -1,71 +1,109 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
 
 export default function Footer() {
+  const [commit, setCommit] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/commit.txt")
+      .then((r) => (r.ok ? r.text() : ""))
+      .then((t) => t && setCommit(t.trim().slice(0, 7)))
+      .catch(() => {});
+  }, []);
+
   return (
-    <footer className="border-t border-[var(--line)] mt-16">
-      <div className="mx-auto max-w-6xl px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-slate-600">
-        <div>
-          <div className="font-semibold text-slate-900">MuggleTech</div>
-          <p className="mt-2 max-w-xs">
+    <footer className="border-t border-[var(--line)] bg-[var(--surface)] mt-16">
+      <div className="mx-auto max-w-6xl px-6 py-12 grid md:grid-cols-4 gap-8 text-sm">
+        {/* Column 1: Brand */}
+        <div className="space-y-3">
+          <div className="font-semibold text-lg">MuggleTech</div>
+          <p className="text-[var(--muted)]">
             AI tools that actually save time. Built with curiosity, caffeine, and code.
           </p>
+          <a
+            href="https://buymeacoffee.com/muggletech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl px-3 py-1.5 font-semibold bg-[var(--brand)] text-white hover:shadow-sm transition"
+          >
+            <span className="text-base">☕</span>
+            <span>Buy us a coffee</span>
+          </a>
+        </div>
+
+        {/* Column 2: Product */}
+        <div className="space-y-2">
+          <div className="font-semibold text-lg">Product</div>
+          <ul className="space-y-1">
+            <li>
+              <a href="/#products" className="hover:underline">All Products</a>
+            </li>
+            <li>
+              <a href="/jane" className="hover:underline">J.A.N.E.</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 3: Company */}
+        <div className="space-y-2">
+          <div className="font-semibold text-lg">Company</div>
+          <ul className="space-y-1">
+            <li><a href="/about" className="hover:underline">About</a></li>
+            <li><a href="/#services" className="hover:underline">Services</a></li>
+            <li><a href="/#contact" className="hover:underline">Contact</a></li>
+            <li><a href="/privacy" className="hover:underline">Privacy</a></li>
+            <li><a href="/terms" className="hover:underline">Terms</a></li>
+          </ul>
+        </div>
+
+        {/* Column 4: Contact */}
+        <div className="space-y-2">
+          <div className="font-semibold text-lg">Contact</div>
+          <a
+            href="tel:+16178938998"
+            className="block text-[var(--muted)] hover:underline"
+          >
+            +1 (617) 893-8998
+          </a>
+          <a
+            href="mailto:contactmuggletech@gmail.com"
+            className="block text-[var(--muted)] hover:underline"
+          >
+            contactmuggletech@gmail.com
+          </a>
+
           <div className="mt-3">
-            <a
-              href="https://buymeacoffee.com/muggletech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl px-3 py-1.5 font-semibold bg-[var(--brand)] text-white hover:shadow-sm"
-            >
-              <span className="text-base">☕</span>
-              <span>Buy us a coffee</span>
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <div className="font-semibold text-slate-900">Product</div>
-          <ul className="mt-2 space-y-2">
-            <li><Link href="/#products" className="hover:text-slate-900">All Products</Link></li>
-            <li><Link href="/jane" className="hover:text-slate-900">J.A.N.E.</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <div className="font-semibold text-slate-900">Company</div>
-          <ul className="mt-2 space-y-2">
-            <li><Link href="/#about" className="hover:text-slate-900">About</Link></li>
-            <li><Link href="/services" className="hover:text-slate-900">Services</Link></li>
-            <li><Link href="/#contact" className="hover:text-slate-900">Contact</Link></li>
-            <li><Link href="/privacy" className="hover:text-slate-900">Privacy</Link></li>
-            <li><Link href="/terms" className="hover:text-slate-900">Terms</Link></li>
-          </ul>
-        </div>
-      </div>
-
-      <div>
-          <div className="font-semibold mb-2">Contact</div>
-          <div className="text-sm text-[var(--muted)]">
-            <a href="tel:+16178938998" className="hover:underline">+1 (617) 893-8998</a><br/>
-            <a href="mailto:contactmuggletech@gmail.com" className="hover:underline">contactmuggletech@gmail.com</a>
-          </div>
-        </div>
-
-      <div className="border-t border-[var(--line)]">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex items-center justify-between">
-          <div>© {new Date().getFullYear()} MuggleTech. All rights reserved.</div>
-          <div className="flex items-center gap-3">
-            <span>Follow us</span>
             <a
               href="https://www.linkedin.com/company/muggletech/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium hover:text-slate-700"
+              className="inline-flex items-center gap-1 text-[var(--muted)] hover:text-[var(--brand)] transition"
             >
-              LinkedIn
+              <span className="font-semibold">Follow us</span>
+              <span className="text-base">in</span>
             </a>
           </div>
         </div>
       </div>
+
+      <div className="text-center pb-6 text-xs text-[var(--muted)]">
+        © 2025 MuggleTech. All rights reserved.
+        {commit && (
+          <div className="mt-1">Deployed: {commit}</div>
+        )}
+      </div>
+
+      {/* Floating Buy-me-a-coffee button (consistent pill) */}
+      <a
+        href="https://buymeacoffee.com/muggletech"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed z-40 bottom-24 right-5 md:bottom-10 md:right-8 inline-flex items-center gap-2 rounded-xl px-4 py-2.5 font-semibold bg-[var(--brand)] text-white hover:shadow-sm transition"
+      >
+        <span className="text-lg">☕</span>
+        <span>Buy us a coffee</span>
+      </a>
     </footer>
   );
 }
