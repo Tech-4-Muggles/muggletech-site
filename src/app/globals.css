@@ -2,6 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+  /* brand tokens (already similar in your theme; ok to overwrite) */
+  --brand-blue: 59 130 246;   /* #3B82F6 */
+  --brand-gold: 234 179 8;    /* #EAB308 */
+  --bg-base: 247 249 255;     /* very light blue-ish */
+  --grid: 14 36 71;           /* deep blue for the hairline grid */
+}
+
+/* A premium layered background for the whole site */
+html, body {
+  background: var(--bg);
+}
+
+/* layered background as one CSS variable so Tailwind's bg-[var(--bg)] works */
+:root {
+  --bg:
+    /* subtle base */
+    radial-gradient(1200px 800px at 50% -20%, rgba(var(--brand-blue) / 0.06), transparent 60%),
+    radial-gradient(900px 700px at 120% 10%, rgba(var(--brand-gold) / 0.08), transparent 60%),
+    /* hairline grid (ultra subtle) */
+    linear-gradient(to right,
+      rgba(var(--grid) / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom,
+      rgba(var(--grid) / 0.03) 1px, transparent 1px),
+    /* base */
+    rgb(var(--bg-base));
+
+  /* grid sizing */
+  background-size:
+    100% 100%,
+    100% 100%,
+    40px 40px,
+    40px 40px,
+    auto;
+
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+
+  background-attachment:
+    fixed, fixed, fixed, fixed, scroll;
+}
+
+/* So the grid is gentler on small screens */
+@media (max-width: 768px) {
+  :root {
+    background-size:
+      100% 100%,
+      100% 100%,
+      56px 56px,
+      56px 56px,
+      auto;
+  }
+}
+
+/* Respect reduced motion users (fade the dynamic glow) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bg:
+      radial-gradient(1200px 800px at 50% -20%, rgba(var(--brand-blue) / 0.04), transparent 60%),
+      radial-gradient(900px 700px at 120% 10%, rgba(var(--brand-gold) / 0.05), transparent 60%),
+      linear-gradient(to right, rgba(var(--grid) / 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(var(--grid) / 0.02) 1px, transparent 1px),
+      rgb(var(--bg-base));
+  }
+}
+
+
 /* ---------- Design tokens (LIGHT THEME BLUE→GOLD) ---------- */
 :root{
   --bg:#f8fafc;
@@ -94,3 +166,7 @@ body{
 }
 
 html { scroll-behavior: smooth; }
+
+/* globals.css (already there — keep or add if missing) */
+.card-hover { transition: transform .15s ease, box-shadow .15s ease; }
+.card-hover:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(2, 6, 23, .06); }
