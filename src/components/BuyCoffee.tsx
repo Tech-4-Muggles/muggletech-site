@@ -1,11 +1,38 @@
 "use client";
 
+/** Optional Plausible typing so TS stops complaining */
 declare global {
-  interface Window { plausible?: (event: string, options?: Record<string, any>) => void }
+  interface Window {
+    plausible?: (event: string, options?: Record<string, any>) => void;
+  }
 }
 
-export default function BuyCoffee({ className = "" }: { className?: string }) {
-  const handleClick = () => { try { window?.plausible?.("buy_coffee_click"); } catch {} };
+/**
+ * BuyCoffee
+ * - `floating` = true renders a fixed floating button
+ * - `floating` = false renders a normal inline button (use this inside the footer)
+ */
+export default function BuyCoffee({
+  className = "",
+  floating = true,
+}: {
+  className?: string;
+  floating?: boolean;
+}) {
+  const handleClick = () => {
+    try {
+      window?.plausible?.("buy_coffee_click");
+    } catch {}
+  };
+
+  const base = [
+    "inline-flex items-center gap-2 rounded-xl font-semibold",
+    "px-5 py-2.5",
+    "bg-[var(--brand)] hover:bg-blue-600 text-white transition shadow-md",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-brand btn-glow",
+  ].join(" ");
+
+  const position = floating ? "fixed bottom-8 right-5 md:bottom-8 md:right-6" : "";
 
   return (
     <a
@@ -13,18 +40,10 @@ export default function BuyCoffee({ className = "" }: { className?: string }) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className={[
-        // position
-        "fixed bottom-8 right-5 md:bottom-8 md:right-6"
-        //"fixed z-40 bottom-24 right-5 md:bottom-10 md:right-8",
-        // blue pill + tiny hover shadow
-        "inline-flex items-center gap-2 rounded-xl px-4 py-2.5 font-semibold",
-        "bg-[var(--brand)] text-white hover:shadow-sm transition",
-        className
-      ].join(" ")}
+      className={[position, base, className].join(" ").trim()}
       aria-label="Buy us a coffee"
     >
-      <span className="text-lg">☕</span>
+      <span aria-hidden>☕</span>
       <span>Buy us a coffee</span>
     </a>
   );
