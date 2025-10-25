@@ -2,69 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* ---------- Brand tokens ---------- */
 :root {
-  /* brand tokens (already similar in your theme; ok to overwrite) */
+  /* brand hues used in gradients and accents */
   --brand-blue: 59 130 246;   /* #3B82F6 */
   --brand-gold: 234 179 8;    /* #EAB308 */
   --bg-base: 247 249 255;     /* very light blue-ish */
   --grid: 14 36 71;           /* deep blue for the hairline grid */
+
+  /* UI palette */
+  --bg: #f8fafc;              /* fallback base (also used by var stack below) */
+  --panel: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --brand: #007BFF;           /* blue */
+  --brand-2: #FFD54F;         /* gold */
 }
 
-/* A premium layered background for the whole site */
-html, body {
-  background: var(--bg);
-}
-
-/* layered background as one CSS variable so Tailwind's bg-[var(--bg)] works */
+/* ---------- Sitewide layered background (applies everywhere) ---------- */
+/* We expose the full stack via --bg-layer so Tailwind's bg-[var(--bg-layer)] works */
 :root {
-  --bg:
-    /* subtle base */
+  --bg-layer:
+    /* soft radial glows */
     radial-gradient(1200px 800px at 50% -20%, rgba(var(--brand-blue) / 0.06), transparent 60%),
     radial-gradient(900px 700px at 120% 10%, rgba(var(--brand-gold) / 0.08), transparent 60%),
-    /* hairline grid (ultra subtle) */
-    linear-gradient(to right,
-      rgba(var(--grid) / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom,
-      rgba(var(--grid) / 0.03) 1px, transparent 1px),
+    /* ultra-subtle hairline grid */
+    linear-gradient(to right, rgba(var(--grid) / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--grid) / 0.03) 1px, transparent 1px),
     /* base */
     rgb(var(--bg-base));
-
-  /* grid sizing */
-  background-size:
-    100% 100%,
-    100% 100%,
-    40px 40px,
-    40px 40px,
-    auto;
-
-  background-position:
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0;
-
-  background-attachment:
-    fixed, fixed, fixed, fixed, scroll;
 }
 
-/* So the grid is gentler on small screens */
+html { color-scheme: light; scroll-behavior: smooth; }
+html, body {
+  background: var(--bg-layer);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px, auto;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  background-attachment: fixed, fixed, fixed, fixed, scroll;
+  color: var(--ink);
+}
+
 @media (max-width: 768px) {
-  :root {
-    background-size:
-      100% 100%,
-      100% 100%,
-      56px 56px,
-      56px 56px,
-      auto;
+  html, body {
+    background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px, auto;
   }
 }
 
-/* Respect reduced motion users (fade the dynamic glow) */
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --bg:
+    --bg-layer:
       radial-gradient(1200px 800px at 50% -20%, rgba(var(--brand-blue) / 0.04), transparent 60%),
       radial-gradient(900px 700px at 120% 10%, rgba(var(--brand-gold) / 0.05), transparent 60%),
       linear-gradient(to right, rgba(var(--grid) / 0.02) 1px, transparent 1px),
@@ -73,56 +60,41 @@ html, body {
   }
 }
 
-
-/* ---------- Design tokens (LIGHT THEME BLUE→GOLD) ---------- */
-:root{
-  --bg:#f8fafc;
-  --panel:#ffffff;
-  --ink:#0f172a;
-  --muted:#475569;
-  --line:#e2e8f0;
-  --brand:#007BFF;   /* blue */
-  --brand-2:#FFD54F; /* gold */
-}
-
-/* One look everywhere */
-:root { color-scheme: light; }
-html, body { background: var(--bg); color: var(--ink); }
-
-h1,h2,h3,h4,h5,h6 { color: var(--ink); }
-p,li,small { color: var(--muted); }
-
+/* ---------- Typography / links ---------- */
+h1, h2, h3, h4, h5, h6 { color: var(--ink); }
+p, li, small { color: var(--muted); }
 a { color: #2563eb; }
 a:hover { color: #1d4ed8; }
 
+/* ---------- Components & effects ---------- */
 .glass {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  box-shadow: 0 6px 24px rgba(15, 23, 42, .06);
+  /* unified definition */
+  @apply bg-white/70 backdrop-blur border border-[var(--line)];
+  box-shadow:
+    0 6px 24px rgba(15, 23, 42, .06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
 }
+
+.card-hover { transition: transform .15s ease, box-shadow .15s ease; }
+.card-hover:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(2, 6, 23, .06); }
 
 .btn-glow:hover { box-shadow: 0 8px 24px rgba(239,191,91,.35); }
 
-.grad-text{
-  background: linear-gradient(90deg,var(--brand),var(--brand-2));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.ring-brand:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(14,165,233,.35); }
-
-body{
-  background:
-    radial-gradient(800px 400px at 70% -10%, rgba(14,165,233,.10), transparent 60%),
-    radial-gradient(600px 300px at -10% 30%, rgba(253,224,71,.08), transparent 60%),
-    var(--bg);
+/* gradient text utility used in hero */
+.grad-text {
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* ===== Subtle motion & hover polish ===== */
+/* focus ring */
+.ring-brand:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(14,165,233,.35); }
+
+/* Subtle motion (honor reduced motion) */
 @media (prefers-reduced-motion: no-preference) {
   .reveal { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
-
-  .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
-  .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,23,42,.10); }
 
   .cta-shine { position: relative; overflow: hidden; }
   .cta-shine::after {
@@ -133,23 +105,15 @@ body{
   .cta-shine:hover::after { transform: translateX(120%); }
 }
 
-/* CTA hover micro-animation */
-.cta-boost {
-  transition: transform .18s ease, box-shadow .18s ease;
-  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.12);
-}
-.cta-boost:hover {
-  transform: translateY(-1px) scale(1.015);
-  box-shadow: 0 10px 28px rgba(25, 118, 210, 0.18);
-}
+/* CTA micro-elevation */
+.cta-boost { transition: transform .18s ease, box-shadow .18s ease; box-shadow: 0 6px 20px rgba(25,118,210,.12); }
+.cta-boost:hover { transform: translateY(-1px) scale(1.015); box-shadow: 0 10px 28px rgba(25,118,210,.18); }
 
 /* Hero word shimmer */
 .shimmer {
   background: linear-gradient(90deg, #f59e0b, #facc15, #fde68a, #facc15, #f59e0b);
   background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: shimmer-move 2.8s ease-in-out infinite;
 }
 @keyframes shimmer-move {
@@ -158,15 +122,5 @@ body{
   100% { background-position: 0% 50% }
 }
 
-/* Floating Buy Coffee hover shadow */
-.buycoffee-fixed:hover {
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-  transform: translateY(-1px);
-  transition: all 0.18s ease;
-}
-
-html { scroll-behavior: smooth; }
-
-/* globals.css (already there — keep or add if missing) */
-.card-hover { transition: transform .15s ease, box-shadow .15s ease; }
-.card-hover:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(2, 6, 23, .06); }
+/* Floating Buy Coffee hover */
+.buycoffee-fixed:hover { box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35); transform: translateY(-1px); transition: all 0.18s ease; }
