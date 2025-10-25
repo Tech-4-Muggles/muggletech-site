@@ -18,13 +18,10 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
         <Reveal>
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-            Building AI solutions to simplify your life.
+            Building AI solutions to simplify your{" "}
+            <span className="whitespace-nowrap">your life.</span>
             <br className="hidden md:block" />
-            <span className="grad-text">
-              {" "}
-              The only thing we can’t do is actual{" "}
-              <span className="shimmer">magic</span>.
-            </span>
+            <span className="grad-text"> The only thing we can’t do is actual <span className="shimmer">magic</span>.</span>
           </h1>
         </Reveal>
 
