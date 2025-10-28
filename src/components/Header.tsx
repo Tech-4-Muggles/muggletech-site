@@ -25,10 +25,10 @@ export default function Header() {
             src={logoSrc}
             alt="MuggleTech"
             width={160}
-            height={36}
+            height={44}
             priority
             onError={() => setLogoSrc(fallback)}
-            className="h-7 md:h-8 w-auto"
+            className="h-10 md:h-11 w-auto"
           />
         </Link>
 

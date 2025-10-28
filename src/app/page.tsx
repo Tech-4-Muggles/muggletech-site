@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import InstallButton from "@/components/InstallButton";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,6 +13,7 @@ export const metadata = {
 };
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div>
       {/* Hero */}
@@ -56,28 +58,46 @@ export default function Home() {
 
       {/* Products */}
       <section id="products" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">Products</h2></Reveal>
-
         <Reveal>
-          <div className="relative glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover">
-            {/* Clickable overlay so the whole card goes to /jane, while keeping other links valid */}
-            <Link href="/jane" aria-label="Learn more about J.A.N.E."
-                  className="absolute inset-0 z-10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" />
-            <Image
-              src="/images/Jane_text.png"
-              alt="J.A.N.E."
-              width={220}
-              height={64}
-              className="h-10 w-auto md:h-12 relative z-20"
-            />
-            <div className="flex-1 relative z-20">
-              <div className="text-xl font-medium">J.A.N.E. — Job Application & Networking Engine</div>
+          <div
+            role="link"
+            tabIndex={0}
+            onClick={() => router.push("/jane")}
+            onKeyDown={(e) => (e.key === "Enter" ? router.push("/jane") : null)}
+            className="glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover cursor-pointer"
+          >
+            {/* Make the icon explicitly clickable too (goes to /jane) */}
+            <Link
+              href="/jane"
+              aria-label="Go to J.A.N.E. page"
+              onClick={(e) => e.stopPropagation()}
+              className="shrink-0"
+            >
+              <Image
+                src="/images/Jane_text.png"
+                alt="J.A.N.E."
+                width={220}
+                height={64}
+                className="h-10 w-auto md:h-12"
+              />
+            </Link>
+
+            <div className="flex-1">
+              <div className="text-xl font-medium">
+                J.A.N.E. — Job Application & Networking Engine
+              </div>
               <p className="text-[var(--muted)] mt-1">
-                Analyze job posts, spot gaps, improve bullets, and draft great cover letters — right in your browser.
+                Analyze job posts, spot gaps, improve bullets, and draft great cover
+                letters — right in your browser.
               </p>
               <div className="mt-3 flex gap-3 items-center">
-                <InstallButton />
-                <Link href="/jane" className="underline">Learn more</Link>
+                {/* stop bubbling so clicking this doesn’t trigger the card navigation */}
+                <span onClick={(e) => e.stopPropagation()}>
+                  <InstallButton />
+                </span>
+                <Link href="/jane" onClick={(e) => e.stopPropagation()} className="underline">
+                  Learn more
+                </Link>
               </div>
             </div>
           </div>
