@@ -2,9 +2,10 @@ import InstallButton from "@/components/InstallButton";
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import Section from "@/components/Section";
 
 export const metadata = {
-  title: "MuggleTech — Building AI solutions to simplify your life",
+  title: "MuggleTech - Building AI solutions to simplify your life",
   description:
     "J.A.N.E. for job seekers, and AI automation services for teams. The only thing we can’t do is actual magic.",
   openGraph: { images: ["/og.jpg"] },
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
+      <Section variant="b" className="mx-auto max-w-1xl px-6 py-20 md:py-28 text-center">
         <Reveal>
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
             Building AI solutions to{" "}
@@ -32,7 +33,7 @@ export default function Home() {
         <Reveal className="mt-4">
           <p className="text-lg md:text-xl text-[var(--muted)] mt-2 max-w-3xl mx-auto">
             We build practical AI tools that save hours every week. J.A.N.E. helps you analyze JDs,
-            improve resumes, and draft great cover letters — right in your browser.
+            improve resumes, and draft great cover letters, right in your browser.
           </p>
         </Reveal>
 
@@ -46,10 +47,10 @@ export default function Home() {
             </a>
           </div>
         </Reveal>
-      </section>
+      </Section>
 
       {/* Products */}
-      <section id="products" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+      <Section id="products" variant="a">
         <Reveal>
           <h2 className="text-3xl font-semibold">Products</h2>
         </Reveal>
@@ -77,9 +78,9 @@ export default function Home() {
             </Link>
 
             <div className="relative z-20 flex-1">
-              <div className="text-xl font-medium">J.A.N.E. — Job Application & Networking Engine</div>
+              <div className="text-xl font-medium">J.A.N.E. - Job Application & Networking Engine</div>
               <p className="text-[var(--muted)] mt-1">
-                Analyze job posts, spot gaps, improve bullets, and draft great cover letters — right in your browser.
+                Analyze job posts, spot gaps, improve bullets, and draft great cover letters, right in your browser.
               </p>
               <div className="mt-3 flex gap-3 items-center">
                 {/* Keep button above the overlay so it’s clickable */}
@@ -93,10 +94,10 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
-      </section>
+      </Section>
 
       {/* Services */}
-      <section id="services" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-4">
+      <Section id="services" variant = "b">
         <Reveal>
           <h2 className="text-3xl font-semibold">Services</h2>
         </Reveal>
@@ -122,29 +123,29 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </Section>
 
       {/* About (teaser) */}
-      <section id="about" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+      <Section id="about" variant="a">
         <Reveal>
           <h2 className="text-3xl font-semibold">About</h2>
         </Reveal>
         <Reveal>
           <p className="text-[var(--muted)] max-w-3xl">
-            MuggleTech builds AI tools that actually help people. We started by solving our own job-hunt pains — and
+            MuggleTech builds AI tools that actually help people. We started by solving our own job-hunt pains, and
             created J.A.N.E. Today we expand into automation and B2B services.
           </p>
         </Reveal>
-      </section>
+      </Section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+      <Section id="testimonials" variant="b">
         <Reveal>
           <h2 className="text-3xl font-semibold">What people say</h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            ["“J.A.N.E. made tailoring my resume painless.”", "Aarav K.", "CS Undergrad"],
+            ["“J.A.N.E. made networking with recruiters so easy.”", "Aarav K.", "CS Undergrad"],
             ["“The fit score helps me focus fast.”", "Maya P.", "Data Analyst"],
             ["“Cover letter drafts are on point.”", "Daniel R.", "MBA Candidate"],
           ].map(([q, n, t]) => (
@@ -157,10 +158,10 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+      <Section id="contact" variant="a">
         <Reveal>
           <h2 className="text-3xl font-semibold">Contact</h2>
           <p className="text-[var(--muted)]">
@@ -209,10 +210,10 @@ export default function Home() {
             </button>
           </form>
         </Reveal>
-      </section>
+      </Section>
 
       {/* Footer CTA */}
-      <section className="mx-auto max-w-6xl px-6 pb-16 text-center">
+      <Section variant="b">
         <Reveal>
           <div className="glass rounded-2xl p-6">
             <h3 className="text-xl font-semibold">Ready to simplify your workflow?</h3>
@@ -221,7 +222,7 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
-      </section>
+      </Section>
     </div>
   );
 }
