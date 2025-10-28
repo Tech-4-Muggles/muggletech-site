@@ -18,10 +18,18 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
         <Reveal>
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-            Building AI solutions to simplify your{" "}
-            <span className="whitespace-nowrap">your life.</span>
+            <span className="md:whitespace-nowrap">
+              Building AI solutions to simplify your life.
+            </span>
             <br className="hidden md:block" />
-            <span className="grad-text"> The only thing we can’t do is actual <span className="shimmer">magic</span>.</span>
+            <span className="grad-text">
+              {" "}
+              The only thing we can’t do is actual{" "}
+              <span className="shimmer inline-block align-baseline" style={{ fontSize: "1.08em" }}>
+                magic
+              </span>
+              .
+            </span>
           </h1>
         </Reveal>
 
@@ -47,35 +55,29 @@ export default function Home() {
       </section>
 
       {/* Products */}
-      <section
-        id="products"
-        className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6"
-      >
+      <section id="products" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">Products</h2></Reveal>
+
         <Reveal>
-          <h2 className="text-3xl font-semibold">Products</h2>
-        </Reveal>
-        <Reveal>
-          <div className="glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover">
+          <div className="relative glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover">
+            {/* Clickable overlay so the whole card goes to /jane, while keeping other links valid */}
+            <Link href="/jane" aria-label="Learn more about J.A.N.E."
+                  className="absolute inset-0 z-10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" />
             <Image
               src="/images/Jane_text.png"
               alt="J.A.N.E."
               width={220}
               height={64}
-              className="h-10 w-auto md:h-12"
+              className="h-10 w-auto md:h-12 relative z-20"
             />
-            <div className="flex-1">
-              <div className="text-xl font-medium">
-                J.A.N.E. — Job Application & Networking Engine
-              </div>
+            <div className="flex-1 relative z-20">
+              <div className="text-xl font-medium">J.A.N.E. — Job Application & Networking Engine</div>
               <p className="text-[var(--muted)] mt-1">
-                Analyze job posts, spot gaps, improve bullets, and draft great
-                cover letters — right in your browser.
+                Analyze job posts, spot gaps, improve bullets, and draft great cover letters — right in your browser.
               </p>
               <div className="mt-3 flex gap-3 items-center">
                 <InstallButton />
-                <Link href="/jane" className="underline">
-                  Learn more →
-                </Link>
+                <Link href="/jane" className="underline">Learn more</Link>
               </div>
             </div>
           </div>
@@ -83,13 +85,8 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section
-        id="services"
-        className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-4"
-      >
-        <Reveal>
-          <h2 className="text-3xl font-semibold">Services</h2>
-        </Reveal>
+      <section id="services" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-4">
+        <Reveal><h2 className="text-3xl font-semibold">Services</h2></Reveal>
         <div className="grid md:grid-cols-2 gap-6">
           <Reveal>
             <div className="glass rounded-2xl p-6 card-hover">
@@ -115,36 +112,25 @@ export default function Home() {
       </section>
 
       {/* About (teaser) */}
-      <section
-        id="about"
-        className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6"
-      >
-        <Reveal>
-          <h2 className="text-3xl font-semibold">About</h2>
-        </Reveal>
+      <section id="about" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">About</h2></Reveal>
         <Reveal>
           <p className="text-[var(--muted)] max-w-3xl">
-            MuggleTech builds AI tools that actually help people. We started by
-            solving our own job-hunt pains — and created J.A.N.E. Today we
-            expand into automation and B2B services.
+            MuggleTech builds AI tools that actually help people. We started by solving our own job-hunt pains — and created J.A.N.E.
+            Today we expand into automation and B2B services.
           </p>
         </Reveal>
       </section>
 
       {/* Testimonials */}
-      <section
-        id="testimonials"
-        className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6"
-      >
-        <Reveal>
-          <h2 className="text-3xl font-semibold">What people say</h2>
-        </Reveal>
+      <section id="testimonials" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">What people say</h2></Reveal>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            ["“J.A.N.E. made tailoring my resume painless.”", "Aarav K.", "CS Undergrad"],
-            ["“The fit score helps me focus fast.”", "Maya P.", "Data Analyst"],
-            ["“Cover letter drafts are on point.”", "Daniel R.", "MBA Candidate"],
-          ].map(([q, n, t]) => (
+            ["“J.A.N.E. made tailoring my resume painless.”","Aarav K.","CS Undergrad"],
+            ["“The fit score helps me focus fast.”","Maya P.","Data Analyst"],
+            ["“Cover letter drafts are on point.”","Daniel R.","MBA Candidate"],
+          ].map(([q,n,t]) => (
             <Reveal key={n as string}>
               <div className="glass rounded-2xl p-5 card-hover">
                 <p className="text-[var(--muted)]">{q}</p>
@@ -157,57 +143,29 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section
-        id="contact"
-        className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6"
-      >
+      <section id="contact" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
         <Reveal>
           <h2 className="text-3xl font-semibold">Contact</h2>
           <p className="text-[var(--muted)]">
-  Prefer phone? Call <a className="underline" href="tel:+16178938998">+1 (617) 893-8998</a>.
-</p>
+            Prefer phone? Call <a className="underline" href="tel:+16178938998">+1 (617) 893-8998</a>.
+          </p>
         </Reveal>
         <Reveal>
-          <form
-            action="https://formspree.io/f/xgvnjydd"
-            method="POST"
-            className="glass rounded-2xl p-6 space-y-4"
-          >
-            <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <form action="https://formspree.io/f/xgvnjydd" method="POST" className="glass rounded-2xl p-6 space-y-4">
+            <input type="text" name="_gotcha" style={{display:"none"}} />
             <div>
               <label className="block text-sm font-medium mb-1">Your name</label>
-              <input
-                required
-                name="name"
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-                placeholder="Jane Doe"
-              />
+              <input required name="name" className="w-full rounded-lg border border-[var(--line)] px-3 py-2" placeholder="Jane Doe" />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Email</label>
-              <input
-                required
-                type="email"
-                name="email"
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-                placeholder="you@email.com"
-              />
+              <input required type="email" name="email" className="w-full rounded-lg border border-[var(--line)] px-3 py-2" placeholder="you@email.com" />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Message</label>
-              <textarea
-                required
-                name="message"
-                rows={5}
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-                placeholder="How can we help?"
-              ></textarea>
+              <textarea required name="message" rows={5} className="w-full rounded-lg border border-[var(--line)] px-3 py-2" placeholder="How can we help?"></textarea>
             </div>
-            <input
-              type="hidden"
-              name="_subject"
-              value="New message from muggletech site"
-            />
+            <input type="hidden" name="_subject" value="New message from muggletech site" />
             <button className="rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine">
               Send message
             </button>
@@ -219,12 +177,8 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 pb-16 text-center">
         <Reveal>
           <div className="glass rounded-2xl p-6">
-            <h3 className="text-xl font-semibold">
-              Ready to simplify your workflow?
-            </h3>
-            <div className="mt-3">
-              <InstallButton />
-            </div>
+            <h3 className="text-xl font-semibold">Ready to simplify your workflow?</h3>
+            <div className="mt-3"><InstallButton /></div>
           </div>
         </Reveal>
       </section>
