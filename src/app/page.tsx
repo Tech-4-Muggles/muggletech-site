@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import InstallButton from "@/components/InstallButton";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,24 +12,17 @@ export const metadata = {
 };
 
 export default function Home() {
-  const router = useRouter();
   return (
     <div>
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
         <Reveal>
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-            <span className="md:whitespace-nowrap">
-              Building AI solutions to simplify your life.
-            </span>
+            Building AI solutions to{" "}
+            <span className="whitespace-nowrap">simplify&nbsp;your&nbsp;life.</span>
             <br className="hidden md:block" />
             <span className="grad-text">
-              {" "}
-              The only thing we can’t do is actual{" "}
-              <span className="shimmer inline-block align-baseline" style={{ fontSize: "1.08em" }}>
-                magic
-              </span>
-              .
+              The only thing we can’t do is actual <span className="shimmer text-[1.15em]">magic</span>.
             </span>
           </h1>
         </Reveal>
