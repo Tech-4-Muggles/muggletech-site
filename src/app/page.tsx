@@ -22,16 +22,17 @@ export default function Home() {
             <span className="whitespace-nowrap">simplify&nbsp;your&nbsp;life.</span>
             <br className="hidden md:block" />
             <span className="grad-text">
-              The only thing we can’t do is actual <span className="shimmer text-[1.15em]">magic</span>.
+              {" "}
+              The only thing we can’t do is actual{" "}
+              <span className="shimmer text-[1.15em]">magic</span>.
             </span>
           </h1>
         </Reveal>
 
         <Reveal className="mt-4">
           <p className="text-lg md:text-xl text-[var(--muted)] mt-2 max-w-3xl mx-auto">
-            We build practical AI tools that save hours every week. J.A.N.E.
-            helps you analyze JDs, improve resumes, and draft great cover
-            letters — right in your browser.
+            We build practical AI tools that save hours every week. J.A.N.E. helps you analyze JDs,
+            improve resumes, and draft great cover letters — right in your browser.
           </p>
         </Reveal>
 
@@ -40,7 +41,6 @@ export default function Home() {
             <a className="cta-shine">
               <InstallButton />
             </a>
-            {/* Use /#products so this works from any route */}
             <a href="/#products" className="underline hover:opacity-90">
               Explore products
             </a>
@@ -51,43 +51,42 @@ export default function Home() {
       {/* Products */}
       <section id="products" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
         <Reveal>
-          <div
-            role="link"
-            tabIndex={0}
-            onClick={() => router.push("/jane")}
-            onKeyDown={(e) => (e.key === "Enter" ? router.push("/jane") : null)}
-            className="glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover cursor-pointer"
-          >
-            {/* Make the icon explicitly clickable too (goes to /jane) */}
+          <h2 className="text-3xl font-semibold">Products</h2>
+        </Reveal>
+
+        <Reveal>
+          <div className="relative glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 card-hover">
+            {/* Full-card overlay link (server-safe) */}
             <Link
               href="/jane"
-              aria-label="Go to J.A.N.E. page"
-              onClick={(e) => e.stopPropagation()}
-              className="shrink-0"
-            >
+              aria-label="Open J.A.N.E. page"
+              className="absolute inset-0 rounded-2xl z-10"
+              tabIndex={-1}
+            />
+
+            {/* Wordmark (also a link for accessibility) */}
+            <Link href="/jane" aria-label="Go to J.A.N.E. page" className="relative z-20 shrink-0">
               <Image
                 src="/images/Jane_text.png"
                 alt="J.A.N.E."
                 width={220}
                 height={64}
                 className="h-10 w-auto md:h-12"
+                priority
               />
             </Link>
 
-            <div className="flex-1">
-              <div className="text-xl font-medium">
-                J.A.N.E. — Job Application & Networking Engine
-              </div>
+            <div className="relative z-20 flex-1">
+              <div className="text-xl font-medium">J.A.N.E. — Job Application & Networking Engine</div>
               <p className="text-[var(--muted)] mt-1">
-                Analyze job posts, spot gaps, improve bullets, and draft great cover
-                letters — right in your browser.
+                Analyze job posts, spot gaps, improve bullets, and draft great cover letters — right in your browser.
               </p>
               <div className="mt-3 flex gap-3 items-center">
-                {/* stop bubbling so clicking this doesn’t trigger the card navigation */}
-                <span onClick={(e) => e.stopPropagation()}>
+                {/* Keep button above the overlay so it’s clickable */}
+                <div className="relative z-20">
                   <InstallButton />
-                </span>
-                <Link href="/jane" onClick={(e) => e.stopPropagation()} className="underline">
+                </div>
+                <Link href="/jane" className="underline relative z-20">
                   Learn more
                 </Link>
               </div>
@@ -98,7 +97,9 @@ export default function Home() {
 
       {/* Services */}
       <section id="services" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-4">
-        <Reveal><h2 className="text-3xl font-semibold">Services</h2></Reveal>
+        <Reveal>
+          <h2 className="text-3xl font-semibold">Services</h2>
+        </Reveal>
         <div className="grid md:grid-cols-2 gap-6">
           <Reveal>
             <div className="glass rounded-2xl p-6 card-hover">
@@ -125,24 +126,28 @@ export default function Home() {
 
       {/* About (teaser) */}
       <section id="about" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">About</h2></Reveal>
+        <Reveal>
+          <h2 className="text-3xl font-semibold">About</h2>
+        </Reveal>
         <Reveal>
           <p className="text-[var(--muted)] max-w-3xl">
-            MuggleTech builds AI tools that actually help people. We started by solving our own job-hunt pains — and created J.A.N.E.
-            Today we expand into automation and B2B services.
+            MuggleTech builds AI tools that actually help people. We started by solving our own job-hunt pains — and
+            created J.A.N.E. Today we expand into automation and B2B services.
           </p>
         </Reveal>
       </section>
 
       {/* Testimonials */}
       <section id="testimonials" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">What people say</h2></Reveal>
+        <Reveal>
+          <h2 className="text-3xl font-semibold">What people say</h2>
+        </Reveal>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            ["“J.A.N.E. made tailoring my resume painless.”","Aarav K.","CS Undergrad"],
-            ["“The fit score helps me focus fast.”","Maya P.","Data Analyst"],
-            ["“Cover letter drafts are on point.”","Daniel R.","MBA Candidate"],
-          ].map(([q,n,t]) => (
+            ["“J.A.N.E. made tailoring my resume painless.”", "Aarav K.", "CS Undergrad"],
+            ["“The fit score helps me focus fast.”", "Maya P.", "Data Analyst"],
+            ["“Cover letter drafts are on point.”", "Daniel R.", "MBA Candidate"],
+          ].map(([q, n, t]) => (
             <Reveal key={n as string}>
               <div className="glass rounded-2xl p-5 card-hover">
                 <p className="text-[var(--muted)]">{q}</p>
@@ -159,23 +164,44 @@ export default function Home() {
         <Reveal>
           <h2 className="text-3xl font-semibold">Contact</h2>
           <p className="text-[var(--muted)]">
-            Prefer phone? Call <a className="underline" href="tel:+16178938998">+1 (617) 893-8998</a>.
+            Prefer phone? Call{" "}
+            <a className="underline" href="tel:+16178938998">
+              +1 (617) 893-8998
+            </a>
+            .
           </p>
         </Reveal>
         <Reveal>
           <form action="https://formspree.io/f/xgvnjydd" method="POST" className="glass rounded-2xl p-6 space-y-4">
-            <input type="text" name="_gotcha" style={{display:"none"}} />
+            <input type="text" name="_gotcha" style={{ display: "none" }} />
             <div>
               <label className="block text-sm font-medium mb-1">Your name</label>
-              <input required name="name" className="w-full rounded-lg border border-[var(--line)] px-3 py-2" placeholder="Jane Doe" />
+              <input
+                required
+                name="name"
+                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
+                placeholder="Jane Doe"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Email</label>
-              <input required type="email" name="email" className="w-full rounded-lg border border-[var(--line)] px-3 py-2" placeholder="you@email.com" />
+              <input
+                required
+                type="email"
+                name="email"
+                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
+                placeholder="you@email.com"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Message</label>
-              <textarea required name="message" rows={5} className="w-full rounded-lg border border-[var(--line)] px-3 py-2" placeholder="How can we help?"></textarea>
+              <textarea
+                required
+                name="message"
+                rows={5}
+                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
+                placeholder="How can we help?"
+              ></textarea>
             </div>
             <input type="hidden" name="_subject" value="New message from muggletech site" />
             <button className="rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine">
@@ -190,7 +216,9 @@ export default function Home() {
         <Reveal>
           <div className="glass rounded-2xl p-6">
             <h3 className="text-xl font-semibold">Ready to simplify your workflow?</h3>
-            <div className="mt-3"><InstallButton /></div>
+            <div className="mt-3">
+              <InstallButton />
+            </div>
           </div>
         </Reveal>
       </section>
