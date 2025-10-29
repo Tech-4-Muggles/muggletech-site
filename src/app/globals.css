@@ -131,44 +131,24 @@ a:hover { color: #1d4ed8; }
   isolation: isolate; /* so pseudo-elements stay behind content */
 }
 
-.band::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+/* ==== Sitewide subtle grid background (no gradients) ==== */
+:root {
+  --bg-base: 247 249 255; /* very light blue-ish */
+  --grid: 14 36 71;       /* deep blue for hairline grid */
 }
 
-/* Blue mist */
-.band-a::before {
+html, body {
   background:
-    radial-gradient(900px 520px at 85% -10%, rgba(37, 99, 235, .08), transparent 65%),
-    linear-gradient(to bottom, rgba(2, 6, 23, .02), rgba(2, 6, 23, .02)),
-    #f8fafc;
-  border-top: 1px solid rgba(2, 6, 23, .06);
-  border-bottom: 1px solid rgba(2, 6, 23, .06);
+    /* hairline grid */
+    linear-gradient(to right, rgba(var(--grid) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--grid) / 0.04) 1px, transparent 1px),
+    rgb(var(--bg-base));
+  background-size: 40px 40px, 40px 40px, auto;
+  background-attachment: fixed, fixed, scroll;
 }
 
-/* Gold mist */
-.band-b::before {
-  background:
-    radial-gradient(800px 520px at 10% -10%, rgba(234, 179, 8, .10), transparent 65%),
-    linear-gradient(to bottom, rgba(2, 6, 23, .02), rgba(2, 6, 23, .02)),
-    #f8fafc;
-  border-top: 1px solid rgba(2, 6, 23, .06);
-  border-bottom: 1px solid rgba(2, 6, 23, .06);
-}
-
-/* Optional: neutral break band for footer CTA or hero */
-.band-neutral::before {
-  background:
-    radial-gradient(900px 520px at 50% -10%, rgba(15, 23, 42, .03), transparent 60%),
-    #f8fafc;
-  border-top: 1px solid rgba(2, 6, 23, .06);
-  border-bottom: 1px solid rgba(2, 6, 23, .06);
-}
-
-/* Keep cards readable on tinted bands */
-.band .glass {
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(8px);
+@media (max-width: 768px) {
+  html, body {
+    background-size: 56px 56px, 56px 56px, auto;
+  }
 }

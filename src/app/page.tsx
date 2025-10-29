@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
+import Lightbox from "@/components/Lightbox";
+import JaneTabs from "@/components/JaneTabs";
 
 export const metadata = {
   title: "MuggleTech - Building AI solutions to simplify your life",
@@ -96,6 +98,46 @@ export default function Home() {
         </Reveal>
       </Section>
 
+     {/* Screenshots */}
+      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2></Reveal>
+
+        <div className="relative">
+          <div className="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-3"
+              style={{scrollbarWidth:"thin"}}
+              aria-label="J.A.N.E. screenshots carousel">
+            {[
+              {src:"/images/jane/analysis.png", alt:"Analyze Job Description"},
+              {src:"/images/jane/connection-note.png", alt:"Generate Connection Note"},
+              {src:"/images/jane/cover-letter-81.png", alt:"Cover Letter with score"},
+              {src:"/images/jane/cover-letter.png", alt:"Generate Cover Letter"},
+            ].map((img) => (
+              <div key={img.src} className="min-w-[80%] sm:min-w-[60%] md:min-w-[48%] snap-center">
+                <div className="glass rounded-2xl p-3 shadow-sm">
+                  <Image src={img.src} alt={img.alt} width={1400} height={900} className="w-full h-auto rounded-lg" />
+                </div>
+                <p className="mt-2 text-sm text-[var(--muted)]">{img.alt}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">Screenshots</h2></Reveal>
+        <Lightbox items={[
+          {src:"/images/jane/analysis.png", alt:"Analyze Job Description"},
+          {src:"/images/jane/connection-note.png", alt:"Generate Connection Note"},
+          {src:"/images/jane/cover-letter-81.png", alt:"Cover Letter with score"},
+          {src:"/images/jane/cover-letter.png", alt:"Generate Cover Letter"},
+        ]}/>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">Walkthrough</h2></Reveal>
+        <JaneTabs />
+      </section>
+
       {/* Services */}
       <Section id="services" variant = "b">
         <Reveal>
@@ -159,6 +201,57 @@ export default function Home() {
           ))}
         </div>
       </Section>
+
+      {/* Founders */}
+      <section id="founders" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal>
+          <h2 className="text-3xl font-semibold">Founders</h2>
+        </Reveal>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {
+              name: "Arhan Sibal",
+              role: "Product Strategy & Development",
+              img: "/images/founder-arhan.webp",
+              blurb:
+                "Leads product strategy and technical development at MuggleTech. Arhan combines data-driven decision making with design thinking to build tools that simplify complex workflows. He previously worked at Bain and BCG, and brings expertise in AI integration, automation, and product analytics to help bridge business goals with technical execution.",
+            },
+            {
+              name: "Shobhit Datta",
+              role: "Product Delivery & Operations",
+              img: "/images/founder-shobhit.webp",
+              blurb:
+                "Oversees product delivery and operations, ensuring smooth execution from prototype to scale. Shobhit blends strong analytical thinking with process optimization to deliver practical, high-impact solutions. His background in consulting and project management helps the team stay agile while maintaining exceptional delivery standards and user satisfaction.",
+            },
+            {
+              name: "Nishant Sharma",
+              role: "Ops & Internal Systems",
+              img: "/images/founder-nishant.webp",
+              blurb:
+                "Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a background in engineering and management, he ensures projects are operationally sound, compliant, and optimized for collaboration — balancing performance, process, and innovation behind the scenes.",
+            },
+            {
+              name: "Medha",
+              role: "Marketing & Growth Strategy",
+              img: "/images/founder-medha.webp",
+              blurb:
+                "Drives marketing, storytelling, and growth strategy for MuggleTech. Medha focuses on authentic communication that connects technology with human value. With experience across digital marketing and community engagement, she leads campaigns that amplify product reach, shape brand identity, and foster meaningful relationships with users and partners.",
+            },
+          ].map((f) => (
+            <Reveal key={f.name}>
+              <div className="glass rounded-2xl p-5 card-hover text-center flex flex-col items-center">
+                <div className="mx-auto w-28 h-28 overflow-hidden rounded-full border border-[var(--line)] shadow-sm">
+                  <Image src={f.img} alt={f.name} width={224} height={224} className="w-full h-full object-cover" />
+                </div>
+                <div className="mt-3 font-medium">{f.name}</div>
+                <div className="text-sm text-[var(--muted)] mb-2">{f.role}</div>
+                <p className="text-sm text-[var(--muted)] leading-relaxed">{f.blurb}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* Contact */}
       <Section id="contact" variant="a">
