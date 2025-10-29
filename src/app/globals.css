@@ -152,3 +152,11 @@ html, body {
     background-size: 56px 56px, 56px 56px, auto;
   }
 }
+
+/* Gradient text helper for hero */
+.hero-grad{
+  background-image: linear-gradient(90deg,#3B82F6 0%,#22C55E 35%,#EAB308 70%,#FACC15 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}

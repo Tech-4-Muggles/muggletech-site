@@ -18,39 +18,56 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <Section variant="b" className="mx-auto max-w-1xl px-6 py-20 md:py-28 text-center">
-        <Reveal>
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-            Building AI solutions to{" "}
-            <span className="whitespace-nowrap">simplify&nbsp;your&nbsp;life.</span>
-            <br className="hidden md:block" />
-            <span className="grad-text">
-              {" "}
-              The only thing we can’t do is actual{" "}
-              <span className="shimmer text-[1.15em]">magic</span>.
-            </span>
-          </h1>
-        </Reveal>
+        <section className="mx-auto max-w-[1100px] px-6 py-20 md:py-28 text-center">
+          <Reveal>
+            <h1 className="tracking-tight">
+              {/* Primary line — gradient, single line, responsive size */}
+              <span
+                className="inline-block font-extrabold hero-grad"
+                style={{
+                  // smaller max so it never overflows the 1100px container
+                  fontSize: "clamp(2.1rem, 5.4vw, 3.6rem)",
+                  lineHeight: 1.06,
+                  whiteSpace: "nowrap",          // keep in one line
+                  overflow: "visible",            // avoid clipping the right edge
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Building AI solutions to simplify your life.
+              </span>
 
-        <Reveal className="mt-4">
-          <p className="text-lg md:text-xl text-[var(--muted)] mt-2 max-w-3xl mx-auto">
-            We build practical AI tools that save hours every week. J.A.N.E. helps you analyze JDs,
-            improve resumes, and draft great cover letters, right in your browser.
-          </p>
-        </Reveal>
+              {/* Secondary line — smaller, calmer */}
+              <span
+                className="block mt-3 font-medium text-slate-800/90"
+                style={{ fontSize: "clamp(1.25rem, 2.6vw, 2rem)" }}
+              >
+                The only thing we can’t do is actual{" "}
+                <span className="shimmer inline-block align-baseline" style={{ fontSize: "1.06em" }}>
+                  magic
+                </span>.
+              </span>
+            </h1>
+          </Reveal>
 
-        <Reveal className="mt-6">
-          <div className="flex items-center justify-center gap-3">
-            <a className="cta-shine">
-              <InstallButton />
-            </a>
-            <a href="/#products" className="underline hover:opacity-90">
-              Explore products
-            </a>
-          </div>
-        </Reveal>
-      </Section>
+          <Reveal className="mt-5">
+            <p className="text-lg md:text-xl text-[var(--muted)] mt-2 max-w-3xl mx-auto">
+              We build practical AI tools that save hours every week. J.A.N.E. helps you analyze JDs,
+              improve resumes, and draft great cover letters — right in your browser.
+            </p>
+          </Reveal>
 
+          <Reveal className="mt-7">
+            <div className="flex items-center justify-center gap-3">
+              <a className="cta-shine">
+                <InstallButton />
+              </a>
+              <a href="/#products" className="underline hover:opacity-90">
+                Explore products
+              </a>
+            </div>
+          </Reveal>
+        </section>
+      
       {/* Products */}
       <Section id="products" variant="a">
         <Reveal>
@@ -229,7 +246,7 @@ export default function Home() {
               role: "Ops & Internal Systems",
               img: "/images/founder-nishant.webp",
               blurb:
-                "Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a background in engineering and management, he ensures projects are operationally sound, compliant, and optimized for collaboration — balancing performance, process, and innovation behind the scenes.",
+                "Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a consulting background with EY, PwC and IBM, he ensures projects are operationally sound, compliant, and optimized for collaboration. Nishant balances performance, process, and innovation from behind the scenes."
             },
             {
               name: "Medha",
