@@ -273,14 +273,7 @@ export default function Home() {
       {/* Contact */}
       <Section id="contact" variant="a">
         <Reveal>
-          <h2 className="text-3xl font-semibold">Contact</h2>
-          <p className="text-[var(--muted)]">
-            Prefer phone? Call{" "}
-            <a className="underline" href="tel:+16178938998">
-              +1 (617) 893-8998
-            </a>
-            .
-          </p>
+          <h2 className="text-3xl font-semibold">Contact Us</h2>
         </Reveal>
         <Reveal>
           <form action="https://formspree.io/f/xgvnjydd" method="POST" className="glass rounded-2xl p-6 space-y-4">
