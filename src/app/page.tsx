@@ -113,7 +113,54 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
+        
+        {/* Redacted teaser card */}
+        <Reveal>
+          <div className="relative glass rounded-2xl p-6 overflow-hidden">
+
+            <div className="flex items-start gap-6 opacity-90">
+              {/* blurred logo block */}
+              <div className="relative w-40 h-20 md:w-48 md:h-24 rounded-xl overflow-hidden ring-1 ring-[var(--line)]">
+                <div
+                  className="absolute inset-0 blur-md"
+                  style={{
+                    background:
+                      "radial-gradient(120% 100% at 0% 0%, #c7d9ff 0%, #eaf2ff 55%, #ffeaa7 95%)",
+                  }}
+                />
+                <div className="absolute inset-0 bg-white/50" />
+              </div>
+
+              {/* blurred text content (looks real, reveals nothing) */}
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <div className="h-6 w-56 rounded-md bg-slate-300/60 blur-[2px]" />
+                  <div className="h-5 w-24 rounded-full bg-slate-200/80 blur-[2px]" />
+                </div>
+
+                <div className="mt-3 space-y-2 select-none pointer-events-none" aria-hidden>
+                  <div className="h-4 w-5/6 rounded bg-slate-200/75 blur-[2px]" />
+                  <div className="h-4 w-4/6 rounded bg-slate-200/75 blur-[2px]" />
+                  <div className="h-4 w-3/5 rounded bg-slate-200/75 blur-[2px]" />
+                </div>
+              </div>
+            </div>
+            {/* stamp */}
+            <div className="pointer-events-none absolute inset-0 grid place-items-center">
+              <span className="px-4 py-2 text-sm md:text-base font-semibold tracking-wide uppercase
+                              bg-amber-100/90 text-amber-800 rounded-full ring-1 ring-amber-300
+                              shadow-sm">
+                New Products Coming soon
+              </span>
+            </div>
+            
+            {/* accessibility note for screen readers only */}
+            <p className="sr-only">MuggleTech Labs: new product coming soon. Details are hidden.</p>
+          </div>
+        </Reveal>
       </Section>
+
+      
 
      {/* Screenshots */}
       <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
@@ -150,19 +197,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* About (teaser) */}
-      <Section id="about" variant="a">
-        <Reveal>
-          <h2 className="text-3xl font-semibold">About</h2>
-        </Reveal>
-        <Reveal>
-          <p className="text-[var(--muted)] max-w-3xl">
-            MuggleTech builds AI tools that actually help people. We started by solving our own job-hunt pains, and
-            created J.A.N.E. Today we expand into automation and B2B services.
-          </p>
-        </Reveal>
-      </Section>
-
       {/* Testimonials */}
       <Section id="testimonials" variant="b">
         <Reveal>
@@ -184,57 +218,6 @@ export default function Home() {
           ))}
         </div>
       </Section>
-
-      {/* Founders */}
-      <section id="founders" className="scroll-mt-28 mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal>
-          <h2 className="text-3xl font-semibold">Founders</h2>
-        </Reveal>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {
-              name: "Arhan Sibal",
-              role: "Product Strategy & Development",
-              img: "/images/founder-arhan.webp",
-              blurb:
-                "Leads product strategy and technical development at MuggleTech. Arhan combines data-driven decision making with design thinking to build tools that simplify complex workflows. He previously worked at Bain and BCG, and brings expertise in AI integration, automation, and product analytics to help bridge business goals with technical execution.",
-            },
-            {
-              name: "Shobhit Datta",
-              role: "Product Delivery & Operations",
-              img: "/images/founder-shobhit.webp",
-              blurb:
-                "Oversees product delivery and operations, ensuring smooth execution from prototype to scale. Shobhit blends strong analytical thinking with process optimization to deliver practical, high-impact solutions. His background in consulting and project management helps the team stay agile while maintaining exceptional delivery standards and user satisfaction.",
-            },
-            {
-              name: "Nishant Sharma",
-              role: "Ops & Internal Systems",
-              img: "/images/founder-nishant.webp",
-              blurb:
-                "Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a consulting background with EY, PwC and IBM, he ensures projects are operationally sound, compliant, and optimized for collaboration. Nishant balances performance, process, and innovation from behind the scenes."
-            },
-            {
-              name: "Medha",
-              role: "Marketing & Growth Strategy",
-              img: "/images/founder-medha.webp",
-              blurb:
-                "Drives marketing, storytelling, and growth strategy for MuggleTech. Medha focuses on authentic communication that connects technology with human value. With experience across digital marketing and community engagement, she leads campaigns that amplify product reach, shape brand identity, and foster meaningful relationships with users and partners.",
-            },
-          ].map((f) => (
-            <Reveal key={f.name}>
-              <div className="glass rounded-2xl p-5 card-hover text-center flex flex-col items-center">
-                <div className="mx-auto w-28 h-28 overflow-hidden rounded-full border border-[var(--line)] shadow-sm">
-                  <Image src={f.img} alt={f.name} width={224} height={224} className="w-full h-full object-cover" />
-                </div>
-                <div className="mt-3 font-medium">{f.name}</div>
-                <div className="text-sm text-[var(--muted)] mb-2">{f.role}</div>
-                <p className="text-sm text-[var(--muted)] leading-relaxed">{f.blurb}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
 
       {/* Contact */}
       <Section id="contact" variant="a">

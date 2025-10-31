@@ -68,7 +68,7 @@ export default function JanePage() {
 
 
       {/* Feedback — Google Form */}
-      <section className="mx-auto max-w-4xl px-0 md:px-6 py-14 space-y-4">
+      <section className="mx-auto max-w-3xl px-0 md:px-6 py-14 space-y-4">
         <Reveal>
           <h2 className="text-3xl font-semibold text-center">Feedback</h2>
         </Reveal>
@@ -76,7 +76,7 @@ export default function JanePage() {
           Tell us what you like and what we should improve. This form does not require sign in.
         </p>
         <div className="glass rounded-2xl overflow-hidden">
-          <div className="relative w-full" style={{ minHeight: 1000 }}>
+          <div className="relative w-full" style={{ minHeight: 1600 }}>
             <iframe
               className="absolute inset-0 w-full h-full"
               src="https://docs.google.com/forms/d/e/1FAIpQLSft-MnYlFaqoFrt7mjJOPu9W5C8DAqKLl8xjnwnax2igAq8-g/viewform?embedded=true"
