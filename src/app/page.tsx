@@ -118,40 +118,6 @@ export default function Home() {
      {/* Screenshots */}
       <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
         <Reveal><h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2></Reveal>
-
-        <div className="relative">
-          <div className="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-3"
-              style={{scrollbarWidth:"thin"}}
-              aria-label="J.A.N.E. screenshots carousel">
-            {[
-              {src:"/images/jane/analysis.png", alt:"Analyze Job Description"},
-              {src:"/images/jane/connection-note.png", alt:"Generate Connection Note"},
-              {src:"/images/jane/cover-letter-81.png", alt:"Cover Letter with score"},
-              {src:"/images/jane/cover-letter.png", alt:"Generate Cover Letter"},
-            ].map((img) => (
-              <div key={img.src} className="min-w-[80%] sm:min-w-[60%] md:min-w-[48%] snap-center">
-                <div className="glass rounded-2xl p-3 shadow-sm">
-                  <Image src={img.src} alt={img.alt} width={1400} height={900} className="w-full h-auto rounded-lg" />
-                </div>
-                <p className="mt-2 text-sm text-[var(--muted)]">{img.alt}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">Screenshots</h2></Reveal>
-        <Lightbox items={[
-          {src:"/images/jane/analysis.png", alt:"Analyze Job Description"},
-          {src:"/images/jane/connection-note.png", alt:"Generate Connection Note"},
-          {src:"/images/jane/cover-letter-81.png", alt:"Cover Letter with score"},
-          {src:"/images/jane/cover-letter.png", alt:"Generate Cover Letter"},
-        ]}/>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">Walkthrough</h2></Reveal>
         <JaneTabs />
       </section>
 
