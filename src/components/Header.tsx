@@ -10,7 +10,10 @@ const nav = [
   { href: "/#services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/#contact", label: "Contact" },
+  { href: "/careers", label: "Careers" },
 ];
+
+<Link href="/careers" className="hover:opacity-90">Careers</Link>
 
 export default function Header() {
   const [open, setOpen] = useState(false);

@@ -6,6 +6,7 @@ import BuyCoffee from "@/components/BuyCoffee";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import PageTransition from "@/components/PageTransition";
+import "@uploadthing/react/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
