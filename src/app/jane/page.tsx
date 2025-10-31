@@ -29,7 +29,7 @@ export default function JanePage() {
       {/* Tagline */}
       <p className="text-center text-[var(--muted)] max-w-3xl mx-auto">
         J.A.N.E. helps you analyze job posts, spot gaps, tailor bullets, and
-        draft cover letters — directly inside LinkedIn and Indeed.
+        draft cover letters right inside LinkedIn and Indeed.
       </p>
 
       {/* Video */}
@@ -39,17 +39,15 @@ export default function JanePage() {
             controls
             playsInline
             preload="metadata"
-            //poster="/images/jane-poster.jpg"   // optional; remove if you don’t add one
             className="absolute inset-0 h-full w-full object-cover"
           >
-            {/* Prefer WEBM if you have it */}
-            {/* <source src="/videos/jane-demo.webm" type="video/webm" /> */}
             <source src="/videos/jane-demo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
 
+      {/* Optional YouTube embed (keep or remove) */}
       <div className="glass rounded-2xl overflow-hidden">
         <div className="relative aspect-video">
           <iframe
@@ -62,23 +60,33 @@ export default function JanePage() {
         </div>
       </div>
 
-      {/* Screenshots */}
-      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2></Reveal>
+      {/* Screenshots — carousel */}
+      <section className="mx-auto max-w-6xl px-0 md:px-6 py-14 space-y-6">
+        <Reveal>
+          <h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2>
+        </Reveal>
 
         <div className="relative">
-          <div className="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-3"
-              style={{scrollbarWidth:"thin"}}
-              aria-label="J.A.N.E. screenshots carousel">
+          <div
+            className="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-3"
+            style={{ scrollbarWidth: "thin" }}
+            aria-label="J.A.N.E. screenshots carousel"
+          >
             {[
-              {src:"/images/jane/analysis.png", alt:"Analyze Job Description"},
-              {src:"/images/jane/connection-note.png", alt:"Generate Connection Note"},
-              {src:"/images/jane/cover-letter-81.png", alt:"Cover Letter with score"},
-              {src:"/images/jane/cover-letter.png", alt:"Generate Cover Letter"},
+              { src: "/images/jane/analysis.png", alt: "Analyze Job Description" },
+              { src: "/images/jane/connection-note.png", alt: "Generate Connection Note" },
+              { src: "/images/jane/cover-letter-81.png", alt: "Cover Letter with score" },
+              { src: "/images/jane/cover-letter.png", alt: "Generate Cover Letter" },
             ].map((img) => (
               <div key={img.src} className="min-w-[80%] sm:min-w-[60%] md:min-w-[48%] snap-center">
                 <div className="glass rounded-2xl p-3 shadow-sm">
-                  <Image src={img.src} alt={img.alt} width={1400} height={900} className="w-full h-auto rounded-lg" />
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={1400}
+                    height={900}
+                    className="w-full h-auto rounded-lg"
+                  />
                 </div>
                 <p className="mt-2 text-sm text-[var(--muted)]">{img.alt}</p>
               </div>
@@ -87,26 +95,66 @@ export default function JanePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">Screenshots</h2></Reveal>
-        <Lightbox items={[
-          {src:"/images/jane/analysis.png", alt:"Analyze Job Description"},
-          {src:"/images/jane/connection-note.png", alt:"Generate Connection Note"},
-          {src:"/images/jane/cover-letter-81.png", alt:"Cover Letter with score"},
-          {src:"/images/jane/cover-letter.png", alt:"Generate Cover Letter"},
-        ]}/>
+      {/* Screenshots — lightbox */}
+      <section className="mx-auto max-w-6xl px-0 md:px-6 py-14 space-y-6">
+        <Reveal>
+          <h2 className="text-3xl font-semibold">Screenshots</h2>
+        </Reveal>
+        <Lightbox
+          items={[
+            { src: "/images/jane/analysis.png", alt: "Analyze Job Description" },
+            { src: "/images/jane/connection-note.png", alt: "Generate Connection Note" },
+            { src: "/images/jane/cover-letter-81.png", alt: "Cover Letter with score" },
+            { src: "/images/jane/cover-letter.png", alt: "Generate Cover Letter" },
+          ]}
+        />
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-        <Reveal><h2 className="text-3xl font-semibold">Walkthrough</h2></Reveal>
+      {/* Walkthrough — tabs */}
+      <section className="mx-auto max-w-6xl px-0 md:px-6 py-14 space-y-6">
+        <Reveal>
+          <h2 className="text-3xl font-semibold">Walkthrough</h2>
+        </Reveal>
         <JaneTabs />
+      </section>
+
+      {/* Feedback — Google Form */}
+      <section className="mx-auto max-w-4xl px-0 md:px-6 py-14 space-y-4">
+        <Reveal>
+          <h2 className="text-3xl font-semibold text-center">Feedback</h2>
+        </Reveal>
+        <p className="text-center text-[var(--muted)]">
+          Tell us what you like and what we should improve. This form does not require sign in.
+        </p>
+        <div className="glass rounded-2xl overflow-hidden">
+          <div className="relative w-full" style={{ minHeight: 1000 }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSft-MnYlFaqoFrt7mjJOPu9W5C8DAqKLl8xjnwnax2igAq8-g/viewform?embedded=true"
+              title="J.A.N.E. feedback form"
+              loading="lazy"
+            >
+              Loading…
+            </iframe>
+          </div>
+        </div>
+        <p className="text-center text-sm text-[var(--muted)]">
+          If the embed does not load, open the form{" "}
+          <a
+            className="underline"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSft-MnYlFaqoFrt7mjJOPu9W5C8DAqKLl8xjnwnax2igAq8-g/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            in a new tab
+          </a>
+          .
+        </p>
       </section>
 
       {/* CTA */}
       <div className="text-center">
         <span className="cta-shine inline-block">
-          {/* reuse your existing button */}
-          {/* or link straight to the store if you prefer */}
           <a
             href="https://chromewebstore.google.com/detail/jane-%E2%80%94-job-application-an/cgbimjanhgfjcopnpklcikkpcbgmjgoo"
             target="_blank"
