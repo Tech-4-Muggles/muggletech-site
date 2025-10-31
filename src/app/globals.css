@@ -121,6 +121,9 @@ a:hover { color: #1d4ed8; }
   50% { background-position: 100% 50% }
   100% { background-position: 0% 50% }
 }
+@media (prefers-reduced-motion: reduce){
+  .shimmer{ animation: none; }
+}
 
 /* Floating Buy Coffee hover */
 .buycoffee-fixed:hover { box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35); transform: translateY(-1px); transition: all 0.18s ease; }
@@ -159,4 +162,11 @@ html, body {
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
+}
+/* Blue → Gold hero gradient (no green "via") */
+.hero-grad{
+  background: linear-gradient(90deg, #3B82F6 0%, #EAB308 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
 }

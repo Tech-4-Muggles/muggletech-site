@@ -104,7 +104,7 @@ export default function JanePage() {
 
       {/* CTA */}
       <div className="text-center">
-        <a className="cta-shine inline-block">
+        <span className="cta-shine inline-block">
           {/* reuse your existing button */}
           {/* or link straight to the store if you prefer */}
           <a
@@ -118,7 +118,7 @@ export default function JanePage() {
             </svg>
             Get J.A.N.E. on Chrome
           </a>
-        </a>
+        </span>
       </div>
     </div>
   );

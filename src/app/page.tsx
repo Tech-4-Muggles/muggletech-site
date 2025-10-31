@@ -52,16 +52,16 @@ export default function Home() {
           <Reveal className="mt-5">
             <p className="text-lg md:text-xl text-[var(--muted)] mt-2 max-w-3xl mx-auto">
               We build practical AI tools that save hours every week. J.A.N.E. helps you analyze JDs,
-              improve resumes, and draft great cover letters — right in your browser.
+              improve resumes, and draft great cover letters, right in your browser.
             </p>
           </Reveal>
 
           <Reveal className="mt-7">
             <div className="flex items-center justify-center gap-3">
-              <a className="cta-shine">
+              <span className="cta-shine">
                 <InstallButton />
-              </a>
-              <a href="/#products" className="underline hover:opacity-90">
+              </span>
+              <a href="/#products" aria-label="Explore MuggleTech products" className="underline hover:opacity-90">
                 Explore products
               </a>
             </div>
