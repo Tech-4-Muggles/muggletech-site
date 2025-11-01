@@ -56,6 +56,11 @@ export default function Footer() {
                 J.A.N.E.
               </Link>
             </li>
+            <li>
+              <Link href="/faq" className="hover:underline">
+                Frequently Asked Questions
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -86,6 +91,11 @@ export default function Footer() {
             <li>
               <Link href="/terms" className="hover:underline">
                 Terms
+              </Link>
+            </li>
+            <li>
+              <Link href="/careers" className="hover:underline">
+                Careers
               </Link>
             </li>
           </ul>

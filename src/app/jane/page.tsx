@@ -2,14 +2,39 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Lightbox from "@/components/Lightbox";
 import JaneTabs from "@/components/JaneTabs";
+import FaqCards, { QA } from "@/components/FaqCards";
 
 export const metadata = {
-  title: "J.A.N.E. — Job Application & Networking Engine | MuggleTech",
+  title: "J.A.N.E. - Job Application & Networking Engine | MuggleTech",
   description:
     "Analyze JDs, improve bullets, and draft strong cover letters right in your browser.",
   openGraph: { images: ["/og.jpg"] },
   alternates: { canonical: "https://muggletech.net/jane" },
 };
+
+// ---- FAQs (top-level) ----
+const JANE_FAQS: QA[] = [
+  {
+    q: "How do I install J.A.N.E.?",
+    a: "Open the Chrome Web Store and click Add to Chrome, then pin the icon for quick access."
+  },
+  {
+    q: "Which sites are supported?",
+    a: "LinkedIn and Indeed today. Many public job pages also work."
+  },
+  {
+    q: "What data do you see?",
+    a: "Only the job page where you open the panel. We do not store your resume or cover-letter content on our servers."
+  },
+  {
+    q: "The panel did not appear. What should I try?",
+    a: "Refresh, click the toolbar icon, ensure the extension is enabled, and reopen the tab if needed."
+  },
+  {
+    q: "How do I share feedback?",
+    a: "Use the feedback form below or message us on LinkedIn. Screenshots help."
+  }
+];
 
 export default function JanePage() {
   return (
@@ -18,7 +43,7 @@ export default function JanePage() {
       <div className="flex items-center justify-center">
         <Image
           src="/images/Jane_text.png"
-          alt="J.A.N.E. — Job Application & Networking Engine"
+          alt="J.A.N.E. - Job Application & Networking Engine"
           width={420}
           height={120}
           className="h-14 w-auto md:h-20"
@@ -26,10 +51,14 @@ export default function JanePage() {
         />
       </div>
 
+      {/* Full form under wordmark */}
+      <p className="text-center text-slate-600 mt-1 text-lg sm:text-xl md:text-2xl font-medium tracking-tight">
+        <span className="font-semibold">Job Application and Networking Engine</span>
+      </p>
+
       {/* Tagline */}
       <p className="text-center text-[var(--muted)] max-w-3xl mx-auto">
-        J.A.N.E. helps you analyze job posts, spot gaps, tailor bullets, and
-        draft cover letters right inside LinkedIn and Indeed.
+        J.A.N.E. helps you analyze job posts, spot gaps, tailor bullets, and draft cover letters right inside LinkedIn and Indeed.
       </p>
 
       {/* Video */}
@@ -47,7 +76,7 @@ export default function JanePage() {
         </div>
       </div>
 
-      {/* Optional YouTube embed (keep or remove) */}
+      {/* Optional YouTube embed */}
       <div className="glass rounded-2xl overflow-hidden">
         <div className="relative aspect-video">
           <iframe
@@ -60,12 +89,19 @@ export default function JanePage() {
         </div>
       </div>
 
-      {/* Screenshots */}
-        <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
-          <Reveal><h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2></Reveal>
-          <JaneTabs />
-        </section>
+      {/* Screenshots + tabs */}
+      <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
+        <Reveal><h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2></Reveal>
+        <JaneTabs />
+      </section>
 
+      {/* FAQs (cards style, same as Careers) */}
+      <section className="mx-auto max-w-6xl px-6 py-10 space-y-4">
+        <FaqCards items={JANE_FAQS} title="J.A.N.E. FAQs" />
+        <div className="text-center -mt-6">
+          <a href="/faq" className="underline">View all FAQs</a>
+        </div>
+      </section>
 
       {/* Feedback — Google Form */}
       <section className="mx-auto max-w-3xl px-0 md:px-6 py-14 space-y-4">
