@@ -31,7 +31,8 @@ const FOUNDERS = [
     role: "Ops & Internal Systems",
     img: "/images/founder-nishant.webp",
     blurb:
-      "Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a consulting background with EY, PwC and IBM, he ensures projects are operationally sound, compliant, and optimized for collaboration. Nishant balances performance, process, and innovation from behind the scenes."
+      //"Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a consulting background with EY, PwC and IBM, he ensures projects are operationally sound, compliant, and optimized for collaboration. Nishant balances performance, process, and innovation from behind the scenes."
+      "Builds internal systems and scalable workflows. With experience at EY, PwC, and IBM, keeps work compliant, efficient, and collaborative."
   },
   {
     name: "Medha",
@@ -44,9 +45,9 @@ const FOUNDERS = [
 
 // Update: start in July 2025 to match OPT
 const TIMELINE: Array<[string, string]> = [
-  ["2025 • Jul", "J.A.N.E. private beta starts with friends and classmates"],
-  ["2025 • Aug", "Vendor tooling and small team automation pilots"],
-  ["2025 • Oct", "Public site refresh and services line formalized"],
+  ["2025 • Jul", "Company incorporated, MVP dev begins"],
+  ["2025 • Sep", "J.A.N.E. private beta starts"],
+  ["2025 • Oct", "J.A.N.E. public release. Public site refresh and services line formalized"],
   ["Next", "Multi-product roadmap and stronger privacy controls by default"],
 ];
 

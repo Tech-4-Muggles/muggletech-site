@@ -211,9 +211,9 @@ export default function Home() {
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            ["“J.A.N.E. made networking with recruiters so easy.”", "Aarav K.", "CS Undergrad"],
-            ["“The fit score helps me focus fast.”", "Maya P.", "Data Analyst"],
-            ["“Cover letter drafts are on point.”", "Daniel R.", "MBA Candidate"],
+            ["“Cover letter drafts are on point, helps me apply much faster. Much recommended to all job-seekers!”", "Aarav K.", "CS Undergrad"],
+            ["“The fit score helps me select my optimal resume for the role.”", "Maya P.", "Data Analyst"],
+            ["“J.A.N.E. made networking with recruiters so easy.”", "Daniel R.", "MBA Candidate"],
           ].map(([q, n, t]) => (
             <Reveal key={n as string}>
               <div className="glass rounded-2xl p-5 card-hover">
