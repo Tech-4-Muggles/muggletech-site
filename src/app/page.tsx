@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
 import Lightbox from "@/components/Lightbox";
 import JaneTabs from "@/components/JaneTabs";
+import ProductBenefits from "@/components/ProductBenefits";
+import StatsStrip from "@/components/StatsStrip";
 
 export const metadata = {
   title: "MuggleTech - Building AI solutions to simplify your life",
@@ -67,6 +69,11 @@ export default function Home() {
             </div>
           </Reveal>
         </section>
+        
+      {/* Slim stats band */}
+      <section className="mx-auto max-w-6xl px-6 pb-10">
+        <StatsStrip />
+      </section>        
       
       {/* Products */}
       <Section id="products" variant="a">

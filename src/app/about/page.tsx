@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import StatsStrip from "@/components/StatsStrip";
+import ProductBenefits from "@/components/ProductBenefits";
+import Values from "@/components/Values";
 
 export const metadata = {
   title: "About — MuggleTech",
@@ -93,35 +96,11 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* Values */}
+    {/* Values */}
       <section className="mx-auto max-w-6xl px-6 pb-6">
-        <Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {VALUES.map((v) => (
-              <div key={v.title} className="glass rounded-2xl p-5 card-hover h-full">
-                <div className="text-2xl">{v.emoji}</div>
-                <div className="mt-2 font-medium">{v.title}</div>
-                <p className="text-sm text-[var(--muted)] mt-1 leading-relaxed">{v.blurb}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
+          <Values />
       </section>
-
-      {/* Slim stats band */}
-      <section className="mx-auto max-w-6xl px-6 pb-10">
-        <Reveal>
-          <div className="glass rounded-2xl p-4 flex flex-wrap items-center justify-center gap-6 md:gap-10">
-            {STATS.map((s) => (
-              <div key={s.v} className="text-center">
-                <div className="text-2xl font-semibold">{s.k}</div>
-                <div className="text-sm text-[var(--muted)]">{s.v}</div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
+      
       {/* Founders */}
       <section id="founders" className="scroll-mt-28 mx-auto max-w-6xl px-6 pb-10 space-y-6">
         <Reveal>

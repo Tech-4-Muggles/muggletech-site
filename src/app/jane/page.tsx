@@ -3,6 +3,8 @@ import Reveal from "@/components/Reveal";
 import Lightbox from "@/components/Lightbox";
 import JaneTabs from "@/components/JaneTabs";
 import FaqCards, { QA } from "@/components/FaqCards";
+import ProductBenefits from "@/components/ProductBenefits";
+import StatsStrip from "@/components/StatsStrip";
 
 export const metadata = {
   title: "J.A.N.E. - Job Application & Networking Engine | MuggleTech",
@@ -60,7 +62,9 @@ export default function JanePage() {
       <p className="text-center text-[var(--muted)] max-w-3xl mx-auto">
         J.A.N.E. helps you analyze job posts, spot gaps, tailor bullets, and draft cover letters right inside LinkedIn and Indeed.
       </p>
-
+      
+      <ProductBenefits />
+      
       {/* Video */}
       <div className="glass rounded-2xl overflow-hidden">
         <div className="relative aspect-video">
@@ -76,23 +80,15 @@ export default function JanePage() {
         </div>
       </div>
 
-      {/* Optional YouTube embed */}
-      <div className="glass rounded-2xl overflow-hidden">
-        <div className="relative aspect-video">
-          <iframe
-            className="absolute inset-0 h-full w-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
-            title="J.A.N.E. demo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        </div>
-      </div>
-
       {/* Screenshots + tabs */}
       <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">
         <Reveal><h2 className="text-3xl font-semibold">See J.A.N.E. in action</h2></Reveal>
         <JaneTabs />
+      </section>
+
+      {/* Slim stats band */}
+      <section className="mx-auto max-w-6xl px-6 pb-10">
+        <StatsStrip />
       </section>
 
       {/* FAQs (cards style, same as Careers) */}

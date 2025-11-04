@@ -5,7 +5,7 @@ type QA = { q: string; a: string };
 
 export default function Faq({
   items,
-  title = "Frequently Asked Questio123ns",
+  title = "Frequently Asked Questions",
   compact = false,
   showBorder = true,
 }: {
