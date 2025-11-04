@@ -57,16 +57,6 @@ export default function EmailApplyCard() {
         <li>Resume as a PDF attachment</li>
       </ul>
 
-      <div className="mt-5 text-center">
-        <a
-          href={mailto}
-          onClick={trackClick}
-          className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white transition shadow-md"
-        >
-          📧 Email your application
-        </a>
-      </div>
-
       <p className="text-xs text-[var(--muted)] mt-3 text-center">
         We only use your data for application review. See our{" "}
         <a href="/privacy" className="underline">privacy policy</a>.

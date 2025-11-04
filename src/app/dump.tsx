@@ -48,4 +48,3 @@ import Reveal from "@/components/Reveal";
                 .
               </p>
             </section>
-      

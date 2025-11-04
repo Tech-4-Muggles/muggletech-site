@@ -14,9 +14,9 @@ export default function Values() {
       {VALUES.map(i => (
         <Reveal key={i.title}>
           <div className="glass rounded-2xl p-5 card-hover h-full">
-            <div className="text-2xl mb-2">{i.emoji}</div>
-            <div className="mt-2 font-medium">{i.title}</div>
-            <p className="text-sm text-[var(--muted)] mt-1 leading-relaxed">{i.blurb}</p>
+            <div className="text-2xl mb-2 text-center">{i.emoji}</div>
+            <div className="mt-2 font-medium text-center">{i.title}</div>
+            <p className="text-sm text-[var(--muted)] mt-1 leading-relaxed text-center">{i.blurb}</p>
           </div>
         </Reveal>
       ))}
