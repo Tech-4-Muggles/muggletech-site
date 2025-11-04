@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
+import EmailApplyCard from "@/components/EmailApplyCard";
 
 export const metadata = {
   title: "Careers — MuggleTech",
@@ -135,118 +136,17 @@ export default function Careers() {
         </ol>
       </Section>
 
-      {/* Application form */}
+
+      {/* Application */}
+      
       <Section id="apply" variant="a">
-        <Reveal><h2 className="text-3xl font-semibold">Apply for an internship</h2></Reveal>
         <Reveal>
-          {/* Tip: create a separate Formspree form for Careers and replace the id below */}
-          <form
-            action="https://formspree.io/f/xgvnjydd"
-            method="POST"
-            encType="multipart/form-data"
-            className="glass rounded-2xl p-6 space-y-4 max-w-3xl"
-          >
-            <input type="text" name="_gotcha" style={{ display: "none" }} />
-            <input type="hidden" name="_subject" value="Careers application - MuggleTech" />
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Full name</label>
-                <input name="name" required className="w-full rounded-lg border border-[var(--line)] px-3 py-2" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input type="email" name="email" required className="w-full rounded-lg border border-[var(--line)] px-3 py-2" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Track</label>
-                <select name="track" className="w-full rounded-lg border border-[var(--line)] px-3 py-2">
-                  <option>Product & Growth</option>
-                  <option>Engineering</option>
-                  <option>Design</option>
-                  <option>Operations</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Availability</label>
-                <select name="availability" className="w-full rounded-lg border border-[var(--line)] px-3 py-2">
-                  <option>Part time</option>
-                  <option>Full time</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">LinkedIn or Portfolio</label>
-              <input name="portfolio" placeholder="https://..." className="w-full rounded-lg border border-[var(--line)] px-3 py-2" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Why MuggleTech</label>
-              <textarea
-                name="motivation"
-                rows={5}
-                placeholder="Two to five sentences are great"
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Resume (PDF or DOCX)</label>
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf,.doc,.docx"
-                className="block w-full text-sm file:mr-4 file:rounded-lg file:border file:border-[var(--line)] file:px-3 file:py-2 file:bg-white file:hover:bg-slate-50"
-                required
-              />
-              <p className="text-xs text-[var(--muted)] mt-1">
-                We store applications privately and review weekly.
-              </p>
-            </div>
-
-            <button className="rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine">
-              Submit application
-            </button>
-          </form>
+          <h2 className="text-3xl font-semibold">Apply for an Internship</h2>
+        </Reveal>
+        <Reveal className="mt-10">
+          <EmailApplyCard />
         </Reveal>
       </Section>
-
-    {/* Application — Google Form */}
-      <section className="mx-auto max-w-3xl px-0 md:px-6 py-14 space-y-4">
-        <Reveal>
-          <h2 className="text-3xl font-semibold text-center">Feedback</h2>
-        </Reveal>
-        <p className="text-center text-[var(--muted)]">
-          Tell us what you like and what we should improve. This form does not require sign in.
-        </p>
-        <div className="glass rounded-2xl overflow-hidden">
-          <div className="relative w-full" style={{ minHeight: 1600 }}>
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://docs.google.com/forms/d/e/1FAIpQLSdgWOm_s8Jfea7Sw87jWbYv_yYADy6emDcs7tcUMUBSYpsf4w/viewform?embedded=true"
-              //https://docs.google.com/forms/d/e/1FAIpQLSdgWOm_s8Jfea7Sw87jWbYv_yYADy6emDcs7tcUMUBSYpsf4w/viewform?usp=dialog
-              title="J.A.N.E. feedback form"
-              loading="lazy"
-            >
-              Loading…
-            </iframe>
-          </div>
-        </div>
-        <p className="text-center text-sm text-[var(--muted)]">
-          If the embed does not load, open the form{" "}
-          <a
-            className="underline"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdgWOm_s8Jfea7Sw87jWbYv_yYADy6emDcs7tcUMUBSYpsf4w/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            in a new tab
-          </a>
-          .
-        </p>
-      </section>
-
 
       {/* FAQ */}
       <Section variant="b">
