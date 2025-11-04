@@ -35,7 +35,7 @@ export default function Home() {
                   letterSpacing: "-0.01em",
                 }}
               >
-                Building AI solutions to simplify your life.
+                Building AI solutions to simplify your life
               </span>
 
               {/* Secondary line — smaller, calmer */}
@@ -46,7 +46,7 @@ export default function Home() {
                 The only thing we can’t do is actual{" "}
                 <span className="shimmer inline-block align-baseline" style={{ fontSize: "1.06em" }}>
                   magic
-                </span>.
+                </span>
               </span>
             </h1>
           </Reveal>

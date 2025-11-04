@@ -31,7 +31,7 @@ const FOUNDERS = [
     role: "Product Strategy & Development",
     img: "/images/founder-arhan.webp",
     blurb:
-      "Leads product strategy and technical development. Ex-Bain & BCG; blends data-driven decisions with design thinking to ship helpful, fast interfaces and robust automations.",
+      "Leads product strategy and technical development. Ex-Bain & BCG. Blends data-driven decisions with design thinking to ship helpful, fast interfaces and robust automations.",
   },
   {
     name: "Shobhit Datta",
@@ -45,14 +45,14 @@ const FOUNDERS = [
     role: "Ops & Internal Systems",
     img: "/images/founder-nishant.webp",
     blurb:
-      "Builds scalable internal systems. Ex EY/PwC/IBM; ensures projects are reliable, compliant, and efficient—so teams move quickly without chaos.",
+      "Manages MuggleTech’s internal operations and systems architecture. Nishant focuses on building scalable infrastructure and efficient workflows across teams. With a consulting background with EY, PwC and IBM, he ensures projects are operationally sound, compliant, and optimized for collaboration. Nishant balances performance, process, and innovation from behind the scenes."
   },
   {
     name: "Medha",
     role: "Marketing & Growth Strategy",
     img: "/images/founder-medha.webp",
     blurb:
-      "Leads marketing, storytelling, and community. Puts human value first—clear narratives, authentic voice, and programs that compound reach.",
+      "Leads marketing, storytelling, and community. Puts human value such as clear narratives, authentic voice, and programs that compound reach first.",
   },
 ];
 
@@ -90,8 +90,8 @@ export default function About() {
         <Reveal>
           <p className="text-[var(--muted)] text-lg leading-relaxed">
             We build practical AI tools and automations that save people real time.
-            Our flagship helper is <strong>J.A.N.E.</strong>. We also partner with teams to
-            streamline repetitive workflows—focusing on usefulness, privacy, and simplicity.
+            Our flagship helper is <strong>J.A.N.E.</strong> We also partner with teams to
+            streamline repetitive workflows, focusing on usefulness, privacy, and simplicity.
           </p>
         </Reveal>
       </section>

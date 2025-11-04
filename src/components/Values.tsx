@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 const VALUES = [
   { emoji: "🛠️", title: "Useful > flashy", blurb: "Ship tools that measurably save time or improve outcomes." },
   { emoji: "🔒", title: "Privacy-first", blurb: "Minimize data, keep it local when possible, and be transparent." },
-  { emoji: "⚡", title: "Quality at speed", blurb: "Move fast, but keep the bar high—tests, docs, observability." },
+  { emoji: "⚡", title: "Quality at speed", blurb: "Move fast, but keep the bar high with tests, docs and observability." },
   { emoji: "🧭", title: "Simple is kind", blurb: "Clear UI, fewer steps, and obvious defaults." },
 ];
 
