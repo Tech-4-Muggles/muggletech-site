@@ -20,19 +20,18 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-        <section className="mx-auto max-w-[1100px] px-6 py-20 md:py-28 text-center">
+        <section className="mx-auto max-w-[1200px] px-6 py-20 md:py-28 text-center">
           <Reveal>
             <h1 className="tracking-tight">
-              {/* Primary line — gradient, single line, responsive size */}
+              {/* Primary line — gradient, wraps naturally on small screens */}
               <span
-                className="inline-block font-extrabold hero-grad"
+                className="font-extrabold hero-grad block"
                 style={{
-                  // smaller max so it never overflows the 1100px container
                   fontSize: "clamp(2.1rem, 5.4vw, 3.6rem)",
                   lineHeight: 1.06,
-                  whiteSpace: "nowrap",          // keep in one line
-                  overflow: "visible",            // avoid clipping the right edge
                   letterSpacing: "-0.01em",
+                  whiteSpace: "normal",   // ✅ allow wrapping
+                  display: "inline",      // behaves naturally inside text flow
                 }}
               >
                 Building AI solutions to simplify your life
@@ -49,6 +48,7 @@ export default function Home() {
                 </span>
               </span>
             </h1>
+
           </Reveal>
 
           <Reveal className="mt-5">
