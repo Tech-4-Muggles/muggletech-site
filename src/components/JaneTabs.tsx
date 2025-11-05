@@ -4,10 +4,10 @@ import Image from "next/image";
 
 export default function JaneTabs() {
   const slides = [
-    { label: "Analyze Job Description", src: "/images/jane-walkthrough/jane-walkthrough-1.png", alt: "Analyze Job Description" },
-    { label: "Cover Letter",            src: "/images/jane-walkthrough/jane-walkthrough-2.png", alt: "Generate Cover Letter" },
-    { label: "Connection Note",         src: "/images/jane-walkthrough/jane-walkthrough-3.png", alt: "Generate Connection Note" },
-    { label: "Compare Resumes",         src: "/images/jane-walkthrough/jane-walkthrough-4.png", alt: "Compare fit with multiple resumes" },
+    { label: "Analyze Job Description", src: "/images/jane-walkthrough/01-analyze-job-description.png", alt: "Analyze Job Description" },
+    { label: "Cover Letter",            src: "/images/jane-walkthrough/02-cover-letter.png",             alt: "Generate Cover Letter" },
+    { label: "Connection Note",         src: "/images/jane-walkthrough/03-connection-note.png",          alt: "Generate Connection Note" },
+    { label: "Compare Resumes",         src: "/images/jane-walkthrough/04-compare-resumes.png",          alt: "Compare fit with multiple resumes" },
   ];
 
   const [i, setI] = useState(0);
