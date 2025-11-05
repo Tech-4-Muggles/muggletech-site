@@ -65,20 +65,20 @@ export default function JanePage() {
       
       <ProductBenefits />
       
-      {/* Video */}
-      <div className="glass rounded-2xl overflow-hidden">
-        <div className="relative aspect-video">
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/videos/jane-demo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
+      
+
+      {/* Optional YouTube embed */}
+          <div className="glass rounded-2xl overflow-hidden">
+            <div className="relative aspect-video">
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src="https://www.youtube.com/embed/IgQ18oBT9WI?rel=0"
+                title="J.A.N.E. demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
 
       {/* Screenshots + tabs */}
       <section className="mx-auto max-w-6xl px-6 py-14 space-y-6">

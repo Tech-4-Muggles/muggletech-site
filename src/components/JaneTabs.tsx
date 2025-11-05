@@ -4,71 +4,72 @@ import Image from "next/image";
 
 export default function JaneTabs() {
   const slides = [
-    { label: "Analyze JD",      src: "/images/jane/analysis.png",       alt: "Analyze Job Description" },
-    { label: "Cover Letter",    src: "/images/jane/cover-letter.png",    alt: "Generate Cover Letter" },
-    { label: "Score Example",   src: "/images/jane/cover-letter-81.png", alt: "Score example" },
-    { label: "Connection Note", src: "/images/jane/connection-note.png", alt: "Generate Connection Note" },
+    { label: "Analyze Job Description", src: "/images/jane_walkthrough/Jane Walkthrough 1.png", alt: "Analyze Job Description" },
+    { label: "Cover Letter",            src: "/images/jane_walkthrough/Jane Walkthrough 2.png", alt: "Generate Cover Letter" },
+    { label: "Connection Note",         src: "/images/jane_walkthrough/Jane Walkthrough 3.png", alt: "Generate Connection Note" },
+    { label: "Compare Resumes",         src: "/images/jane_walkthrough/Jane Walkthrough 4.png", alt: "Compare fit with multiple resumes" },
   ];
   const [i, setI] = useState(0);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {/* Tabs */}
       <div className="flex flex-wrap justify-center gap-2">
         {slides.map((s, idx) => (
           <button
             key={s.label}
             onClick={() => setI(idx)}
-            className={`px-3 py-1.5 rounded-lg border text-sm sm:text-base transition ${
-              i === idx ? "bg-[var(--panel)] shadow-sm font-medium" : "bg-white/60 hover:bg-white/80 text-gray-700"
-            }`}
+            className={`px-3 py-1.5 rounded-lg border text-sm sm:text-base transition
+              ${i === idx
+                ? "bg-[var(--panel)] shadow-sm font-medium"
+                : "bg-white/60 hover:bg-white/80 text-gray-700"}`}
           >
             {s.label}
           </button>
         ))}
       </div>
 
-      {/* Crossfade stage */}
-      <div className="glass rounded-2xl p-3 flex justify-center">
-        <div
-          className="
-            relative w-full overflow-hidden
-            max-w-[92vw] sm:max-w-[80vw] md:max-w-[60vw] lg:max-w-[45vw] xl:max-w-[33vw]
-          "
-          style={{ maxHeight: "70vh" }}
-        >
-          {slides.map((s, idx) => (
-            <Image
-              key={s.src}
-              src={s.src}
-              alt={s.alt}
-              width={1200}
-              height={800}
-              sizes="(min-width:1280px) 33vw, (min-width:1024px) 45vw, (min-width:768px) 60vw, 92vw"
-              // Crossfade
-              className={`absolute inset-0 w-full h-auto rounded-lg shadow-sm transition-opacity duration-300 ease-out
-                ${i === idx ? "opacity-100" : "opacity-0"}
-              `}
-              // Lazy for non-active; eager for current
-              loading={i === idx ? "eager" : "lazy"}
-              priority={i === idx}
-            />
-          ))}
-          {/* Preserve height so the container does not collapse while images overlap */}
-          <div className="invisible">
-            <Image
-              src={slides[i].src}
-              alt=""
-              width={1200}
-              height={800}
-              sizes="(min-width:1280px) 33vw, (min-width:1024px) 45vw, (min-width:768px) 60vw, 92vw"
-              className="w-full h-auto"
-            />
+      {/* Centered stage */}
+      <div className="flex justify-center">
+        <div className="glass rounded-2xl shadow-sm p-2 sm:p-3 md:p-4 inline-block">
+          {/* Image container */}
+          <div
+            className="
+              relative mx-auto overflow-hidden
+              w-[92vw] sm:w-[640px] md:w-[720px] lg:w-[780px]
+              max-h-[72vh] aspect-[3/2]
+            "
+          >
+            {slides.map((s, idx) => (
+              <Image
+                key={s.src}
+                src={s.src}
+                alt={s.alt}
+                fill
+                sizes="(min-width:1280px) 780px, (min-width:1024px) 720px, (min-width:768px) 640px, 92vw"
+                className={`rounded-xl shadow transition-opacity duration-300 ease-out object-contain ${
+                  i === idx ? "opacity-100" : "opacity-0"
+                }`}
+                priority={i === idx}
+              />
+            ))}
+          </div>
+
+          {/* Fading caption below */}
+          <div className="relative h-6 mt-3">
+            {slides.map((s, idx) => (
+              <div
+                key={s.alt}
+                className={`absolute inset-0 flex items-center justify-center text-sm text-[var(--muted)] transition-opacity duration-300 ${
+                  i === idx ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {s.alt}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-      <div className="text-center text-sm text-[var(--muted)]">{slides[i].alt}</div>
     </div>
   );
 }
