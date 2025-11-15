@@ -35,11 +35,12 @@ const FOUNDERS = [
       "Builds internal systems and scalable workflows. With experience at EY, PwC, and IBM, keeps work compliant, efficient, and collaborative."
   },
   {
-    name: "Medha",
+    name: "Medha Kapoor",
     role: "Marketing & Growth Strategy",
     img: "/images/founder-medha.webp",
     blurb:
-      "Leads marketing, storytelling, and community. Focus on clear narratives, authentic voice, and programs that compound reach.",
+      "Leads user research, GTM, and messaging. Synthesizes interviews and market insight into clear positioning and campaigns that drive adoption. "
+      //"Leads marketing, storytelling, and community. Focus on clear narratives, authentic voice, and programs that compound reach.",
   },
 ];
 
