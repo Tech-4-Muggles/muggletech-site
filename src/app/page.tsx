@@ -175,33 +175,54 @@ export default function Home() {
         <JaneTabs />
       </section>
 
-      {/* Services */}
-      <Section id="services" variant = "b">
+      {/* Services teaser */}
+      <Section id="services" variant="b">
         <Reveal>
-          <h2 className="text-3xl font-semibold">Services</h2>
+          <h2 className="text-3xl font-semibold">AI services for teams</h2>
         </Reveal>
-        <div className="grid md:grid-cols-2 gap-6">
+        <Reveal>
+          <p className="text-[var(--muted)] max-w-3xl mt-2">
+            Beyond J.A.N.E., we work with small teams to automate repetitive workflows and build simple internal tools.
+            Think of it as a lightweight AI partner for your existing processes, not a full rebuild.
+          </p>
+        </Reveal>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-6">
           <Reveal>
-            <div className="glass rounded-2xl p-6 card-hover">
-              <div className="text-lg font-medium">AI Automation</div>
+            <div className="glass rounded-2xl p-6 card-hover h-full">
+              <div className="text-lg font-medium">AI automation</div>
               <ul className="list-disc pl-6 text-[var(--muted)] mt-2 space-y-1">
-                <li>Identify high-leverage workflows</li>
-                <li>Design & implement LLM automations</li>
-                <li>Pilot, measure, and iterate</li>
+                <li>Map your current workflow step by step.</li>
+                <li>Identify one or two high leverage steps to automate.</li>
+                <li>Design, pilot, and measure a small AI powered helper.</li>
               </ul>
             </div>
           </Reveal>
           <Reveal>
-            <div className="glass rounded-2xl p-6 card-hover">
-              <div className="text-lg font-medium">Tool Development</div>
+            <div className="glass rounded-2xl p-6 card-hover h-full">
+              <div className="text-lg font-medium">Internal tools</div>
               <ul className="list-disc pl-6 text-[var(--muted)] mt-2 space-y-1">
-                <li>Browser extensions & internal tools</li>
-                <li>Integrations: Slack, GDrive, Notion</li>
-                <li>Security & privacy by default</li>
+                <li>Browser extensions or micro apps for your team.</li>
+                <li>Safe integrations with tools like Slack, GDrive, or Notion.</li>
+                <li>Simple dashboards so you can see what is working.</li>
               </ul>
             </div>
           </Reveal>
         </div>
+
+        <Reveal className="mt-6">
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/services"
+              className="inline-flex items-center rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine"
+            >
+              View services
+            </Link>
+            <Link href="/#contact" className="underline hover:opacity-90">
+              Or just tell us what feels painful
+            </Link>
+          </div>
+        </Reveal>
       </Section>
 
       {/* Testimonials */}

@@ -7,7 +7,7 @@ import InstallButton from "./InstallButton";
 
 const nav = [
   { href: "/#products", label: "Products" },
-  { href: "/#services", label: "Services" },
+  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/#contact", label: "Contact" },
   { href: "/careers", label: "Careers" },
