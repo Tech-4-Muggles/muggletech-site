@@ -7,6 +7,7 @@ import Lightbox from "@/components/Lightbox";
 import JaneTabs from "@/components/JaneTabs";
 import ProductBenefits from "@/components/ProductBenefits";
 import StatsStrip from "@/components/StatsStrip";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: "MuggleTech - Building AI solutions to simplify your life",
@@ -253,42 +254,7 @@ export default function Home() {
           <h2 className="text-3xl font-semibold">Contact Us</h2>
         </Reveal>
         <Reveal>
-          <form action="https://formspree.io/f/xgvnjydd" method="POST" className="glass rounded-2xl p-6 space-y-4">
-            <input type="text" name="_gotcha" style={{ display: "none" }} />
-            <div>
-              <label className="block text-sm font-medium mb-1">Your name</label>
-              <input
-                required
-                name="name"
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-                placeholder="Jane Doe"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Email</label>
-              <input
-                required
-                type="email"
-                name="email"
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-                placeholder="you@email.com"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Message</label>
-              <textarea
-                required
-                name="message"
-                rows={5}
-                className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
-                placeholder="How can we help?"
-              ></textarea>
-            </div>
-            <input type="hidden" name="_subject" value="New message from muggletech site" />
-            <button className="rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine">
-              Send message
-            </button>
-          </form>
+          <ContactForm />
         </Reveal>
       </Section>
 

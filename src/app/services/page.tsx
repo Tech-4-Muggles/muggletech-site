@@ -113,19 +113,19 @@ export default function Services() {
         <ol className="grid md:grid-cols-4 gap-6 list-decimal pl-6">
           {[
             [
-              "01 - Discovery",
+              "01. Discovery",
               "You walk us through the current workflow, tools, and pain points. We ask simple questions and sketch where automation helps.",
             ],
             [
-              "02 - Proposal",
+              "02. Proposal",
               "We share a short written plan with scope, rough timeline, constraints, and what success looks like in plain language.",
             ],
             [
-              "03 - Build",
+              "03. Build",
               "We ship a small first version, get feedback quickly, and tighten the loop until it feels natural for your team.",
             ],
             [
-              "04 - Support",
+              "04. Support",
               "We document flows, hand off usage guides, and stay available for tweaks and light maintenance if you want it.",
             ],
           ].map(([t, d]) => (

@@ -122,7 +122,7 @@ export default function Footer() {
         <div className="mx-auto max-w-6xl px-6 py-4 text-xs text-[var(--muted)] flex items-center gap-2">
           <span>© {new Date().getFullYear()} MuggleTech. All rights reserved.</span>
           <span className="ml-auto">Built with ❤️ using Next.js & Tailwind CSS.</span>
-          {short && (
+          {/*{short && (
             <>
               <span>•</span>
               <a
@@ -135,6 +135,7 @@ export default function Footer() {
               </a>
             </>
           )}
+            */}
         </div>
       </div>
     </footer>
