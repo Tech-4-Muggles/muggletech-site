@@ -5,3 +5,6 @@ out
 # mac / logs
 .DS_Store
 *.log
+.env
+.env.local
+.env*.local
