@@ -25,15 +25,43 @@ export async function POST(req: Request) {
       );
     }
 
-    const formData = await req.formData();
+    const contentType = req.headers.get("content-type") || "";
 
-    const parsed = schema.safeParse({
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    });
+    let payload: { name: unknown; email: unknown; message: unknown };
 
+    if (contentType.includes("application/json")) {
+      // Old frontend: JSON body
+      const body = await req.json();
+      payload = {
+        name: body.name,
+        email: body.email,
+        message: body.message,
+      };
+    } else if (
+      contentType.includes("multipart/form-data") ||
+      contentType.includes("application/x-www-form-urlencoded")
+    ) {
+      // Newer frontend (if you ever use <form method="POST"> directly)
+      const formData = await req.formData();
+      payload = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+      };
+    } else {
+      console.error("[CONTACT API] Unsupported Content-Type:", contentType);
+      return NextResponse.json(
+        {
+          error:
+            'Content-Type was not one of "multipart/form-data" or "application/x-www-form-urlencoded" or "application/json".',
+        },
+        { status: 400 }
+      );
+    }
+
+    const parsed = schema.safeParse(payload);
     if (!parsed.success) {
+      console.error("[CONTACT API] Validation error:", parsed.error);
       return NextResponse.json(
         { error: "Invalid form submission." },
         { status: 400 }
