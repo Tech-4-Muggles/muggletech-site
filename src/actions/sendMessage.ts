@@ -45,8 +45,7 @@ export async function sendMessage(formData: FormData) {
     });
 
     return { success: true };
-  } catch (err) {
-    console.error(err);
-    return { error: "Email failed to send. Please try again later." };
-  }
-}
+  } catch (err: any) {
+  console.error("RESEND ERROR:", err);
+  return { error: err?.message || "Email failed to send. Please try again later." };
+}}
