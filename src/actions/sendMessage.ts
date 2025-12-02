@@ -3,8 +3,6 @@
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const schema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
@@ -13,6 +11,20 @@ const schema = z.object({
 });
 
 export async function sendMessage(formData: FormData) {
+  // 1) Validate environment – but do NOT throw in constructor
+  const apiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.CONTACT_TO_EMAIL;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+
+  if (!apiKey || !toEmail || !fromEmail) {
+    console.error(
+      "Contact form misconfigured: missing RESEND_API_KEY / CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL"
+    );
+    // Return a safe error so the UI can show a message, but builds don’t fail
+    return { error: "Email service is temporarily unavailable." };
+  }
+
+  // 2) Validate form data
   const data = schema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -26,27 +38,29 @@ export async function sendMessage(formData: FormData) {
 
   const { name, email, message } = data.data;
 
+  // 3) Create Resend client *inside* the function
+  const resend = new Resend(apiKey);
+
   try {
-    // 1) Email to you
+    // Email to you
     await resend.emails.send({
-      from: `MuggleTech Contact <${process.env.EMAIL_FROM}>`,
-      to: process.env.EMAIL_TO!,
+      from: fromEmail,           // already "MuggleTech Contact <no-reply@…>"
+      to: toEmail,
       subject: `New message from ${name}`,
-      //replyTo: email,
       text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
 
-    // 2) Confirmation to sender
+    // Confirmation to sender
     await resend.emails.send({
-      from: `MuggleTech <${process.env.EMAIL_FROM}>`,
+      from: fromEmail,
       to: email,
       subject: "We received your message",
-      text: `Hi ${name},\n\nThanks for reaching out! We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\n— Team MuggleTech`,
+      text: `Hi ${name},\n\nThanks for reaching out! We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\n– Team MuggleTech`,
     });
 
     return { success: true };
   } catch (err) {
-    console.error(err);
+    console.error("Resend error", err);
     return { error: "Email failed to send. Please try again later." };
   }
 }
