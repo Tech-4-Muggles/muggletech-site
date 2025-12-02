@@ -11,7 +11,7 @@ const schema = z.object({
 });
 
 export async function sendMessage(formData: FormData) {
-  // 1) Validate environment – but do NOT throw in constructor
+  // 1) Read env vars *inside* the function
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_TO_EMAIL;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
@@ -20,7 +20,7 @@ export async function sendMessage(formData: FormData) {
     console.error(
       "Contact form misconfigured: missing RESEND_API_KEY / CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL"
     );
-    // Return a safe error so the UI can show a message, but builds don’t fail
+    // Do NOT throw here – return a safe error so builds don't fail
     return { error: "Email service is temporarily unavailable." };
   }
 
@@ -38,13 +38,13 @@ export async function sendMessage(formData: FormData) {
 
   const { name, email, message } = data.data;
 
-  // 3) Create Resend client *inside* the function
+  // 3) Create the Resend client *inside* the function, after we know apiKey exists
   const resend = new Resend(apiKey);
 
   try {
     // Email to you
     await resend.emails.send({
-      from: fromEmail,           // already "MuggleTech Contact <no-reply@…>"
+      from: fromEmail,        // e.g. "MuggleTech Contact <no-reply@muggletech.net>"
       to: toEmail,
       subject: `New message from ${name}`,
       text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
