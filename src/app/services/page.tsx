@@ -36,10 +36,10 @@ export default function Services() {
               Talk to us about a workflow
             </Link>
             <a
-              href="mailto:hello@muggletech.com?subject=Services inquiry - MuggleTech"
+              href="mailto:info@muggletech.com?subject=Services inquiry - MuggleTech"
               className="underline text-sm md:text-base"
             >
-              Or email hello@muggletech.com
+              Or email info@muggletech.com
             </a>
           </div>
         </Reveal>
@@ -300,10 +300,10 @@ export default function Services() {
                 Describe a workflow
               </Link>
               <a
-                href="mailto:hello@muggletech.com?subject=Services inquiry - MuggleTech"
+                href="mailto:info@muggletech.com?subject=Services inquiry - MuggleTech"
                 className="underline text-sm md:text-base"
               >
-                Or email hello@muggletech.com
+                Or email info@muggletech.com
               </a>
             </div>
           </div>

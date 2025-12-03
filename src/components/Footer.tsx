@@ -37,7 +37,7 @@ export default function Footer() {
               <a href="tel:+16178938998">+1 (617) 893-8998</a>
             </div>
             <div className="text-[var(--muted)]">
-              <a href="mailto:contactmuggletech@gmail.com">contactmuggletech@gmail.com</a>
+              <a href="mailto:info@muggletech.net">info@muggletech.net</a>
             </div>
           </div>
         </div>
