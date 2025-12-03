@@ -6,7 +6,7 @@ import Image from "next/image";
 import InstallButton from "./InstallButton";
 
 const nav = [
-  { href: "/#products", label: "Products" },
+  { href: "/jane", label: "Products" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/#contact", label: "Contact" },
