@@ -1,80 +1,49 @@
 "use client";
 
 import { useState } from "react";
-
-type Status = "idle" | "loading" | "success" | "error";
+import { sendMessage } from "@/actions/sendMessage";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("loading");
-    setError(null);
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          honeypot: "", // hidden field, kept empty by real users
-        }),
-      });
-
-      const json = await res.json().catch(() => ({}));
-
-      if (!res.ok || json.ok === false) {
-        console.error("Contact API error:", json);
-        setStatus("error");
-        setError(
-          json?.error ||
-            "Something went wrong while sending your message. Please try again."
-        );
-        return;
-      }
-
-      // Clear fields and show success
-      setForm({ name: "", email: "", message: "" });
-      setStatus("success");
-    } catch (err) {
-      console.error("Contact fetch error:", err);
-      setStatus("error");
-      setError(
-        "Something went wrong while sending your message. Please try again."
-      );
-    }
-  }
-
-  const isDisabled = status === "loading";
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   return (
-    <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 space-y-4">
+    <form
+      className="glass rounded-2xl p-6 space-y-4"
+      action={async (formData) => {
+        setStatus("loading");
+        try {
+          const result = await sendMessage(formData);
+
+          if (result?.error) {
+            console.error("Contact form error:", result.error);
+            setStatus("error");
+          } else {
+            setStatus("success");
+          }
+        } catch (err) {
+          console.error("Contact form unexpected error:", err);
+          setStatus("error");
+        }
+      }}
+    >
+      {/* success banner */}
       {status === "success" && (
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
-          Thanks for reaching out. We have received your message and emailed you
-          a copy.
+        <div className="mb-3 rounded-md bg-green-50 px-3 py-2 text-sm text-green-700 border border-green-200">
+          Thanks for reaching out. We have received your message and emailed you a copy.
         </div>
       )}
 
+      {/* error banner */}
       {status === "error" && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
-          {error}
+        <div className="mb-3 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 border border-red-200">
+          Something went wrong while sending your message. Please try again.
         </div>
       )}
 
-      {/* Honeypot field for bots only */}
-      <input
-        type="text"
-        name="website"
-        autoComplete="off"
-        tabIndex={-1}
-        className="hidden"
-        value=""
-        readOnly
-      />
+      {/* honeypot */}
+      <input type="text" name="_gotcha" style={{ display: "none" }} />
 
       <div>
         <label className="block text-sm font-medium mb-1">Your name</label>
@@ -83,9 +52,7 @@ export default function ContactForm() {
           name="name"
           className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
           placeholder="Jane Doe"
-          value={form.name}
-          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-          disabled={isDisabled}
+          disabled={status === "loading"}
         />
       </div>
 
@@ -97,9 +64,7 @@ export default function ContactForm() {
           name="email"
           className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
           placeholder="you@email.com"
-          value={form.email}
-          onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-          disabled={isDisabled}
+          disabled={status === "loading"}
         />
       </div>
 
@@ -111,35 +76,16 @@ export default function ContactForm() {
           rows={5}
           className="w-full rounded-lg border border-[var(--line)] px-3 py-2"
           placeholder="How can we help?"
-          value={form.message}
-          onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-          disabled={isDisabled}
-        />
+          disabled={status === "loading"}
+        ></textarea>
       </div>
 
-      <div className="flex items-center gap-3">
-        <button
-          type="submit"
-          className="rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine disabled:opacity-60 disabled:cursor-not-allowed"
-          disabled={isDisabled}
-        >
-          {status === "loading"
-            ? "Sending…"
-            : status === "success"
-            ? "Message sent"
-            : "Send message"}
-        </button>
-
-        {status === "success" && (
-          <button
-            type="button"
-            className="text-sm underline"
-            onClick={() => setStatus("idle")}
-          >
-            Send another message
-          </button>
-        )}
-      </div>
+      <button
+        className="rounded-xl px-5 py-2.5 font-semibold bg-[var(--brand)] hover:bg-blue-600 text-white cta-shine disabled:opacity-70"
+        disabled={status === "loading"}
+      >
+        {status === "loading" ? "Sending..." : status === "success" ? "Message sent" : "Send message"}
+      </button>
 
       <p className="text-xs text-[var(--muted)]">
         We only use your details to reply to this message.
