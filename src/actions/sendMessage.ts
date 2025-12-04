@@ -34,7 +34,20 @@ export async function sendMessage(formData: FormData) {
   });
 
   if (!parsed.success) {
-    return { error: "Invalid form submission." };
+    const issues = parsed.error.issues;
+
+    // Turn Zod errors into readable messages
+    const message = issues
+      .map((i) => {
+        if (i.path.includes("name")) return "Please enter a valid name (min 2 characters).";
+        if (i.path.includes("email")) return "Please enter a valid email address.";
+        if (i.path.includes("message")) return "Message must be at least 10 characters long.";
+        return "Invalid input. Please check your form.";
+      })
+      .join(" ");
+
+    return { error: message };
+    //return { error: "Invalid form submission." };
   }
 
   if (!resendApiKey || !emailFrom || !emailTo) {
@@ -66,7 +79,7 @@ export async function sendMessage(formData: FormData) {
   } catch (err: any) {
     console.error("[CONTACT] RESEND ERROR:", err);
     return {
-      error: err?.message || "Email failed to send. Please try again later.",
+      error: err?.message || "We could not send your message right now. Please try again in a few minutes.",
     };
   }
 }
